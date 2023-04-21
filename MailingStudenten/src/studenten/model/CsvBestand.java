@@ -1,208 +1,62 @@
 package studenten.model;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.*;
 
-import javafx.beans.InvalidationListener;
-import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableList;
-
 public class CsvBestand {
-//    static String pad = "/test.csv";
-//    static String delimiter = ",";
+    public static final String pad = "/files/mailingstudenten.csv";
+    public static final String delimiter = ";";
+
+    private Map<Student,ArrayList<Resultaat>> studentLijst ;
+    private List<Student> studenten;
     private final InputStream inputStream;
-//    private List<Student> studenten;
-    private final ObservableList<Student> studenten
-            = FXCollections.observableArrayList();
 
     public CsvBestand() {
-        studenten = new ObservableList<Student>() {
-            @Override
-            public void addListener(ListChangeListener<? super Student> listChangeListener) {
+        studentLijst = new HashMap<Student,ArrayList<Resultaat>>();
+        studenten = new ArrayList<>();
+        inputStream = getClass().getResourceAsStream(pad);
+        leesBestand();
 
-            }
-
-            @Override
-            public void removeListener(ListChangeListener<? super Student> listChangeListener) {
-
-            }
-
-            @Override
-            public boolean addAll(Student... students) {
-                return false;
-            }
-
-            @Override
-            public boolean setAll(Student... students) {
-                return false;
-            }
-
-            @Override
-            public boolean setAll(Collection<? extends Student> collection) {
-                return false;
-            }
-
-            @Override
-            public boolean removeAll(Student... students) {
-                return false;
-            }
-
-            @Override
-            public boolean retainAll(Student... students) {
-                return false;
-            }
-
-            @Override
-            public void remove(int i, int i1) {
-
-            }
-
-            @Override
-            public int size() {
-                return 0;
-            }
-
-            @Override
-            public boolean isEmpty() {
-                return false;
-            }
-
-            @Override
-            public boolean contains(Object o) {
-                return false;
-            }
-
-            @Override
-            public Iterator<Student> iterator() {
-                return null;
-            }
-
-            @Override
-            public Object[] toArray() {
-                return new Object[0];
-            }
-
-            @Override
-            public <T> T[] toArray(T[] a) {
-                return null;
-            }
-
-            @Override
-            public boolean add(Student student) {
-                return false;
-            }
-
-            @Override
-            public boolean remove(Object o) {
-                return false;
-            }
-
-            @Override
-            public boolean containsAll(Collection<?> c) {
-                return false;
-            }
-
-            @Override
-            public boolean addAll(Collection<? extends Student> c) {
-                return false;
-            }
-
-            @Override
-            public boolean addAll(int index, Collection<? extends Student> c) {
-                return false;
-            }
-
-            @Override
-            public boolean removeAll(Collection<?> c) {
-                return false;
-            }
-
-            @Override
-            public boolean retainAll(Collection<?> c) {
-                return false;
-            }
-
-            @Override
-            public void clear() {
-
-            }
-
-            @Override
-            public Student get(int index) {
-                return null;
-            }
-
-            @Override
-            public Student set(int index, Student element) {
-                return null;
-            }
-
-            @Override
-            public void add(int index, Student element) {
-
-            }
-
-            @Override
-            public Student remove(int index) {
-                return null;
-            }
-
-            @Override
-            public int indexOf(Object o) {
-                return 0;
-            }
-
-            @Override
-            public int lastIndexOf(Object o) {
-                return 0;
-            }
-
-            @Override
-            public ListIterator<Student> listIterator() {
-                return null;
-            }
-
-            @Override
-            public ListIterator<Student> listIterator(int index) {
-                return null;
-            }
-
-            @Override
-            public List<Student> subList(int fromIndex, int toIndex) {
-                return null;
-            }
-
-            @Override
-            public void addListener(InvalidationListener invalidationListener) {
-
-            }
-
-            @Override
-            public void removeListener(InvalidationListener invalidationListener) {
-
-            }
-        }
-        inputStream = getClass().getResourceAsStream("/files/mailingstudenten.csv");
-        leesCSV();
     }
 
-    private void leesCSV() {
+    public void leesBestand() {
         try (final BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
             String line = reader.readLine();
             Student student;
+            Resultaat resultaat;
+            int teller = 0;
+            String[] kolommen;
             while (line != null) {
-                String[] tokens = line.split(";");
-                student = new Student(tokens[0], tokens[1], Integer.parseInt(tokens[2]), tokens[3]);
-                studenten.add(student);
-                line = reader.readLine();
+                if(teller==0) {
+                    String[] l = line.split(";");
+                    kolommen = new String[l.length - 1];
+                    for (int i = 0; i < l.length - 1; i++) {
+                        kolommen[i] = l[i + 1];
+                    }
+                }
+                    else{
+                        String[] fields = line.split(delimiter);
+                        student = new Student(fields[0], fields[1], fields[2]);
+                        resultaat = new Resultaat(fields[3],
+                                fields[4],
+                                fields[5],
+                                fields[6],
+                                fields[7],
+                                fields[8]);
+                        studentLijst.put(student,new ArrayList<Resultaat>());
+                        studentLijst.get(student).add(resultaat);
+                        line = reader.readLine();
+                    }
+                    teller++;
+                }
             }
-        }
+
         catch (IOException ex) {
             ex.printStackTrace();
         }
+    }
+
+    public Map<Student, ArrayList<Resultaat>> getStudentLijst() {
+        return studentLijst;
     }
 }
