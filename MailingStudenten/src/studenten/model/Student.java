@@ -1,8 +1,9 @@
 package studenten.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
+import java.util.Map;
 
 public class Student {
     // csv file bevat de volgende kolommen:
@@ -53,6 +54,27 @@ public class Student {
 
     public void setResultaten(List<Resultaat> resultaten) {
         this.resultaten = resultaten;
+    }
+
+    public List<PeriodeResultaat> getPeriodeResultaten() {
+        HashMap<String, ArrayList<Resultaat>> resultatenPerPeriode = new HashMap<>();
+        for (Resultaat resultaat: this.resultaten) {
+            if (resultatenPerPeriode.containsKey(resultaat.getPeriode())) {
+                resultaten = resultatenPerPeriode.get(resultaat.getPeriode());
+                resultaten.add(resultaat);
+            } else {
+                ArrayList<Resultaat> resultaten = new ArrayList<>();
+                resultaten.add(resultaat);
+                resultatenPerPeriode.put(resultaat.getPeriode(), resultaten);
+            }
+        }
+
+        List<PeriodeResultaat> periodeResultaten = new ArrayList<>();
+        for (Map.Entry<String, ArrayList<Resultaat>> entry: resultatenPerPeriode.entrySet()) {
+            PeriodeResultaat periodeResultaat = new PeriodeResultaat(this, entry.getKey(), entry.getValue());
+            periodeResultaten.add(periodeResultaat);
+        }
+        return periodeResultaten;
     }
 
     @Override

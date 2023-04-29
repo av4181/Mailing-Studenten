@@ -1,7 +1,5 @@
 package studenten.model;
 
-import javafx.beans.property.SimpleStringProperty;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
@@ -22,6 +20,38 @@ public class Resultaat implements Map<Student, ArrayList<Resultaat>> {
         this.examenkansomschrijving = examenkansomschrijving;
         this.kansaandeel = kansaandeel;
         this.periode = periode;
+    }
+
+    public String getRapportonderdeel() {
+        return rapportonderdeel;
+    }
+
+    public String getDeelgroepCode() {
+        return deelgroepCode;
+    }
+
+    public Double getPunt() {
+        if (this.punt.equals("NAANG") || this.punt.equals("--") || this.punt.equals("xx")) {
+            return 0.00;
+        } else {
+            return Double.parseDouble(this.punt);
+        }
+    }
+
+    public String getExamenkansomschrijving() {
+        return examenkansomschrijving;
+    }
+
+    public String getKansaandeel() {
+        return kansaandeel;
+    }
+
+    public String getPeriode() {
+        return periode;
+    }
+
+    public boolean isGeslaagd() {
+        return this.getPunt() >= 10;
     }
 
     @Override
