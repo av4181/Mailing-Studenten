@@ -23,7 +23,7 @@ public class MailTemplateOranje extends MailTemplate {
         Iterator<Resultaat> iterator = periodeResultaat.getNietGeslaagdeResultaten().iterator();
         while (iterator.hasNext()) {
             Resultaat resultaat = iterator.next();
-            content += String.format("%s (%f.2d/20)", resultaat.getRapportonderdeel(), resultaat.getPunt());
+            content += String.format("%s (%.2f/20)", resultaat.getRapportonderdeel(), resultaat.getPunt());
             if (iterator.hasNext()) {
                 content += " en ";
             }

@@ -22,7 +22,7 @@ public class MailTemplateGeel extends MailTemplate {
 
         String content = "";
         content += String.format("<p>Dag %s,</p>", student.getVoornaam());
-        content += String.format("<p>Je bent voor de meeste vakken geslaagd in de examens van %s. Jammer dat je niet slaagde voor %s (%f.2d/20). Ga zeker naar het inzagerecht van dit vak.</p>", periodeResultaat.getPeriode(), nietGeslaagdResultaat.getRapportonderdeel(), nietGeslaagdResultaat.getPunt());
+        content += String.format("<p>Je bent voor de meeste vakken geslaagd in de examens van %s. Jammer dat je niet slaagde voor %s (%.2f/20). Ga zeker naar het inzagerecht van dit vak.</p>", periodeResultaat.getPeriode(), nietGeslaagdResultaat.getRapportonderdeel(), nietGeslaagdResultaat.getPunt());
         content += "<p>Doe zo verder.</p>";
         content += "<p>Met vriendelijke groeten,</p>";
         content += String.format("<p>%s %s</p>", instelling.getDocentVoornaam(), instelling.getDocentAchternaam());
