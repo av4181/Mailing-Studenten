@@ -4,7 +4,7 @@ import java.util.List;
 
 public class PeriodeResultaat {
     public enum KleurCode {
-        GROEN, GEEL, ORANJE, ROOD
+        GROEN, GEEL, ORANJE, ROOD, GRIJS
     }
 
     private Student student;
@@ -30,16 +30,21 @@ public class PeriodeResultaat {
     }
 
     public KleurCode bepaalKleurCode() {
+        Instelling instelling = new Instelling();
         List<Resultaat> nietGeslaagdeResultaten = this.getNietGeslaagdeResultaten();
-        if (nietGeslaagdeResultaten.size() == this.resultaten.size()) {
-            return KleurCode.ROOD;
-        } else if (nietGeslaagdeResultaten.size() > 1) {
-            return KleurCode.ORANJE;
-        } else if (nietGeslaagdeResultaten.size() == 1) {
-            return KleurCode.GEEL;
-        } else {
+
+        instelling.getBereikGroen().isInBereik(nietGeslaagdeResultaten.size());
+
+        if (instelling.getBereikGroen().isInBereik(nietGeslaagdeResultaten.size())) {
             return KleurCode.GROEN;
+        } else if (instelling.getBereikGeel().isInBereik(nietGeslaagdeResultaten.size())) {
+            return KleurCode.GEEL;
+        } else if (instelling.getBereikOranje().isInBereik(nietGeslaagdeResultaten.size())) {
+            return KleurCode.ORANJE;
+        } else if (instelling.getBereikRood().isInBereik(nietGeslaagdeResultaten.size())) {
+            return KleurCode.ROOD;
         }
+        return KleurCode.GRIJS;
     }
 
     public double berekenGemiddelde() {

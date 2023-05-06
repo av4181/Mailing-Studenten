@@ -3,6 +3,7 @@ package studenten.view.instellingen;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 
 public class InstellingenView extends TabPane {
     private GridPane gridPane;
@@ -18,6 +19,11 @@ public class InstellingenView extends TabPane {
 
     private TextField mailsAanmakenBestemmingInput;
     private Button kiesMailsAanmakenBestemmingKnop;
+
+    private BereikElement bereikGroenElement;
+    private BereikElement bereikGeelElement;
+    private BereikElement bereikOranjeElement;
+    private BereikElement bereikRoodElement;
     private Button instellingenOpslaanKnop;
     private Tab tabAlgemeen;
 
@@ -43,6 +49,11 @@ public class InstellingenView extends TabPane {
         this.mailsAanmakenBestemmingInput.setDisable(true);
         this.kiesMailsAanmakenBestemmingKnop = new Button("Kies bestemming");
 
+        this.bereikGroenElement = new BereikElement("Bereik groen", 0, 0);
+        this.bereikGeelElement = new BereikElement("Bereik geel", 1, 1);
+        this.bereikOranjeElement = new BereikElement("Bereik oranje", 2);
+        this.bereikRoodElement = new BereikElement("Bereik rood");
+
         this.instellingenOpslaanKnop = new Button("Opslaan");
 
         this.tabAlgemeen = new Tab("Algemeen", this.gridPane);
@@ -60,10 +71,31 @@ public class InstellingenView extends TabPane {
         this.gridPane.add(docentAchternaamInput, 1, 1);
         this.gridPane.add(linkAfspraakLabel, 0, 2);
         this.gridPane.add(linkAfspraakInput, 1, 2);
-        this.gridPane.add(instellingenOpslaanKnop, 0, 4);
         this.gridPane.add(mailsAanmakenBestemmingLabel, 0, 3);
         this.gridPane.add(mailsAanmakenBestemmingInput, 1, 3);
         this.gridPane.add(kiesMailsAanmakenBestemmingKnop, 2, 3);
+
+        this.gridPane.add(bereikGroenElement.getLabel(), 0, 4);
+        HBox bereikGroenInputs = new HBox();
+        bereikGroenInputs.getChildren().addAll(new Label(">="), bereikGroenElement.getInputLaag(), bereikGroenElement.getInputHoog(), new Label("<="));
+        this.gridPane.add(bereikGroenInputs, 1, 4);
+
+        this.gridPane.add(bereikGeelElement.getLabel(), 0, 5);
+        HBox bereikGeelInputs = new HBox();
+        bereikGeelInputs.getChildren().addAll(new Label(">="), bereikGeelElement.getInputLaag(), bereikGeelElement.getInputHoog(), new Label("<="));
+        this.gridPane.add(bereikGeelInputs, 1, 5);
+
+        this.gridPane.add(bereikOranjeElement.getLabel(), 0, 6);
+        HBox bereikOranjeInputs = new HBox();
+        bereikOranjeInputs.getChildren().addAll(new Label(">="), bereikOranjeElement.getInputLaag(), bereikOranjeElement.getInputHoog(), new Label("<="));
+        this.gridPane.add(bereikOranjeInputs, 1, 6);
+
+        this.gridPane.add(bereikRoodElement.getLabel(), 0, 7);
+        HBox bereikRoodInputs = new HBox();
+        bereikRoodInputs.getChildren().addAll(new Label(">="), bereikRoodElement.getInputLaag());
+        this.gridPane.add(bereikRoodInputs, 1, 7);
+
+        this.gridPane.add(instellingenOpslaanKnop, 0, 8);
 
         this.gridPane.setHgap(10);
         this.gridPane.setVgap(10);
@@ -111,5 +143,21 @@ public class InstellingenView extends TabPane {
     }
     Button getKiesMailsAanmakenBestemmingKnop() {
         return this.kiesMailsAanmakenBestemmingKnop;
+    }
+
+    public BereikElement getBereikGroenElement() {
+        return bereikGroenElement;
+    }
+
+    public BereikElement getBereikGeelElement() {
+        return bereikGeelElement;
+    }
+
+    public BereikElement getBereikOranjeElement() {
+        return bereikOranjeElement;
+    }
+
+    public BereikElement getBereikRoodElement() {
+        return bereikRoodElement;
     }
 }
