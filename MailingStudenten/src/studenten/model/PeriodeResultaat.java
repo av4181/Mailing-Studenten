@@ -1,7 +1,5 @@
 package studenten.model;
 
-import javafx.beans.property.StringProperty;
-
 import java.util.List;
 
 public class PeriodeResultaat {
@@ -35,7 +33,7 @@ public class PeriodeResultaat {
         List<Resultaat> nietGeslaagdeResultaten = this.getNietGeslaagdeResultaten();
         if (nietGeslaagdeResultaten.size() == this.resultaten.size()) {
             return KleurCode.ROOD;
-        } else if (nietGeslaagdeResultaten.size() > 2) {
+        } else if (nietGeslaagdeResultaten.size() > 1) {
             return KleurCode.ORANJE;
         } else if (nietGeslaagdeResultaten.size() == 1) {
             return KleurCode.GEEL;
@@ -50,10 +48,10 @@ public class PeriodeResultaat {
             totaal += resultaat.getPunt();
         }
 
-        return Math.round(totaal / this.resultaten.size());
+        return totaal / this.resultaten.size();
     }
 
     public List<Resultaat> getNietGeslaagdeResultaten() {
-        return this.resultaten.stream().filter(Resultaat::isGeslaagd).toList();
+        return this.resultaten.stream().filter(resultaat -> !resultaat.isGeslaagd()).toList();
     }
 }

@@ -1,42 +1,62 @@
 package studenten.model;
 
+import java.io.File;
 import java.util.prefs.Preferences;
 
 public class Instelling {
-    private Preferences preferences;
+    private String docentVoornaam;
+    private String docentAchternaam;
+    private String linkAfspraak;
+    private String mailsAanmakenBestemming;
 
     public Instelling() {
-        this.preferences = Preferences.userRoot().node(this.getClass().getName());
+        Preferences preferences = Preferences.userRoot().node(this.getClass().getName());
+        this.docentVoornaam = preferences.get("docentVoornaam", "");
+        this.docentAchternaam = preferences.get("docentAchternaam", "");
+        this.linkAfspraak = preferences.get("linkAfspraak", "");
+
+        String userDirectoryString = System.getProperty("user.home");
+        File userDirectory = new File(userDirectoryString);
+        this.mailsAanmakenBestemming = preferences.get("mailsAanmakenBestemming", userDirectory.getAbsolutePath());
     }
 
     public String getDocentVoornaam() {
-        return preferences.get("docentVoornaam", "");
+        return this.docentVoornaam;
     }
 
     public String getDocentAchternaam() {
-        return preferences.get("docentAchternaam", "");
+        return this.docentAchternaam;
     }
 
     public String getLinkAfspraak() {
-        return preferences.get("linkAfspraak", "");
+        return this.linkAfspraak;
+    }
+
+    public String getMailsAanmakenBestemming() {
+        return this.mailsAanmakenBestemming;
     }
 
     public void opslaan() {
         Preferences preferences = Preferences.userRoot().node(this.getClass().getName());
-        preferences.put("docentVoornaam", "test");
-        preferences.put("docentAchternaam", "test");
-        preferences.put("linkAfspraak", "test");
+        preferences.put("docentVoornaam", this.docentVoornaam);
+        preferences.put("docentAchternaam", this.docentAchternaam);
+        preferences.put("linkAfspraak", this.linkAfspraak);
+        preferences.put("mailsAanmakenBestemming", this.mailsAanmakenBestemming);
     }
 
     public void setDocentVoornaam(String docentVoornaam) {
-        preferences.put("docentVoornaam", docentVoornaam);
+        this.docentVoornaam = docentVoornaam;
     }
 
     public void setDocentAchternaam(String docentAchternaam) {
-        preferences.put("docentAchternaam", docentAchternaam);
+        this.docentAchternaam = docentAchternaam;
     }
 
     public void setLinkAfspraak(String linkAfspraak) {
-        preferences.put("linkAfspraak", linkAfspraak);
+        this.linkAfspraak = linkAfspraak;
+    }
+
+    public void setMailsAanmakenBestemming(String mailsAanmakenBestemming) {
+        this.mailsAanmakenBestemming = mailsAanmakenBestemming;
     }
 }
