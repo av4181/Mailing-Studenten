@@ -1,8 +1,8 @@
 package studenten.model;
 
 public class MailTemplateRood extends MailTemplate {
-    public MailTemplateRood(PeriodeResultaat periodeResultaat, Instelling instelling) {
-        super(periodeResultaat, instelling);
+    public MailTemplateRood(PeriodeResultaat periodeResultaat) {
+        super(periodeResultaat);
     }
 
     @Override

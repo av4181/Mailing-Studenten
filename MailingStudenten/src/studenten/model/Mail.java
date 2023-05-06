@@ -18,14 +18,16 @@ public class Mail {
     private String bestemmingsEmailAdres;
     private MailTemplate mailTemplate;
 
-    public Mail(String bestemmingsEmailAdres, MailTemplate mailTemplate) {
+    private Instelling instelling;
+
+    public Mail(String bestemmingsEmailAdres, MailTemplate mailTemplate, Instelling instelling) {
         this.bestemmingsEmailAdres = bestemmingsEmailAdres;
         this.mailTemplate = mailTemplate;
+        this.instelling = instelling;
     }
 
     public void opslaan() throws IOException, MessagingException {
-        // todo: let the user choose where to save these.
-        Path directoryPath = Paths.get("/mails/" + mailTemplate.periodeResultaat.getPeriode());
+        Path directoryPath = Paths.get(this.instelling.getMailsAanmakenBestemming() + "/mails/" + mailTemplate.periodeResultaat.getPeriode());
         Files.createDirectories(directoryPath);
 
         Session session = Session.getInstance(System.getProperties());

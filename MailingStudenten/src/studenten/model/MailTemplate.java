@@ -4,21 +4,21 @@ public abstract class MailTemplate {
     protected PeriodeResultaat periodeResultaat;
     protected Instelling instelling;
 
-    public MailTemplate(PeriodeResultaat periodeResultaat, Instelling instelling) {
+    public MailTemplate(PeriodeResultaat periodeResultaat) {
         this.periodeResultaat = periodeResultaat;
-        this.instelling = instelling;
+        this.instelling = new Instelling();
     }
 
-    public static MailTemplate voorPeriodeResultaat(PeriodeResultaat periodeResultaat, Instelling instelling) {
+    public static MailTemplate voorPeriodeResultaat(PeriodeResultaat periodeResultaat) {
         PeriodeResultaat.KleurCode kleurCode = periodeResultaat.bepaalKleurCode();
         if (kleurCode == PeriodeResultaat.KleurCode.GROEN) {
-            return new MailTemplateGroen(periodeResultaat, instelling);
+            return new MailTemplateGroen(periodeResultaat);
         } else if (kleurCode == PeriodeResultaat.KleurCode.GEEL) {
-            return new MailTemplateGeel(periodeResultaat, instelling);
+            return new MailTemplateGeel(periodeResultaat);
         } else if (kleurCode == PeriodeResultaat.KleurCode.ORANJE) {
-            return new MailTemplateOranje(periodeResultaat, instelling);
+            return new MailTemplateOranje(periodeResultaat);
         } else {
-            return new MailTemplateRood(periodeResultaat, instelling);
+            return new MailTemplateRood(periodeResultaat);
         }
     }
 

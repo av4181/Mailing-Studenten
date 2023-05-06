@@ -3,8 +3,8 @@ package studenten.model;
 import java.util.Iterator;
 
 public class MailTemplateOranje extends MailTemplate {
-    public MailTemplateOranje(PeriodeResultaat periodeResultaat, Instelling instelling) {
-        super(periodeResultaat, instelling);
+    public MailTemplateOranje(PeriodeResultaat periodeResultaat) {
+        super(periodeResultaat);
     }
 
     @Override

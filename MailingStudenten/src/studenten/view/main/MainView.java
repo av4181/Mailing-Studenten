@@ -4,6 +4,7 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
+import studenten.view.aanmakenmails.AanmakenMailsPresenter;
 import studenten.view.aanmakenmails.AanmakenMailsView;
 
 public class MainView extends BorderPane {
@@ -27,6 +28,7 @@ public class MainView extends BorderPane {
         this.menuBar.getMenus().add(menu);
 
         this.aanmakenMailsView = new AanmakenMailsView();
+        new AanmakenMailsPresenter(aanmakenMailsView);
     }
 
     private void layoutNodes() {

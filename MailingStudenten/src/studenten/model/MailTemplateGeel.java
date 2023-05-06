@@ -3,8 +3,8 @@ package studenten.model;
 import java.util.List;
 
 public class MailTemplateGeel extends MailTemplate {
-    public MailTemplateGeel(PeriodeResultaat periodeResultaat, Instelling instelling) {
-        super(periodeResultaat, instelling);
+    public MailTemplateGeel(PeriodeResultaat periodeResultaat) {
+        super(periodeResultaat);
     }
 
     @Override
