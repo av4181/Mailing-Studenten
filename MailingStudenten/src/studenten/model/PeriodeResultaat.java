@@ -1,9 +1,11 @@
 package studenten.model;
 
+import javafx.beans.property.StringProperty;
+
 import java.util.List;
 
 public class PeriodeResultaat {
-    enum KleurCode {
+    public enum KleurCode {
         GROEN, GEEL, ORANJE, ROOD
     }
 
@@ -40,6 +42,15 @@ public class PeriodeResultaat {
         } else {
             return KleurCode.GROEN;
         }
+    }
+
+    public double berekenGemiddelde() {
+        double totaal = 0.00;
+        for (Resultaat resultaat: this.resultaten) {
+            totaal += resultaat.getPunt();
+        }
+
+        return Math.round(totaal / this.resultaten.size());
     }
 
     public List<Resultaat> getNietGeslaagdeResultaten() {
