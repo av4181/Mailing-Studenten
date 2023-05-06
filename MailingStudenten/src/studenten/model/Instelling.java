@@ -20,9 +20,9 @@ public class Instelling {
         this.docentAchternaam = preferences.get("docentAchternaam", "");
         this.linkAfspraak = preferences.get("linkAfspraak", "");
         this.bereikGroen = new Bereik(preferences.getInt("groenVanaf", 0), preferences.getInt("groenTotEnMet", 0));
-        this.bereikGeel = new Bereik(preferences.getInt("geelVanaf", 0), preferences.getInt("geelTotEnMet", 0));
-        this.bereikOranje = new Bereik(preferences.getInt("oranjeVanaf", 0), preferences.getInt("oranjeTotEnMet", 0));
-        this.bereikRood = new Bereik(preferences.getInt("roodVanaf", 0), preferences.getInt("roodTotEnMet", 0));
+        this.bereikGeel = new Bereik(preferences.getInt("geelVanaf", 1), preferences.getInt("geelTotEnMet", 1));
+        this.bereikOranje = new Bereik(preferences.getInt("oranjeVanaf", 2), preferences.getInt("oranjeTotEnMet", 2));
+        this.bereikRood = new Bereik(preferences.getInt("roodVanaf", 3), preferences.getInt("roodTotEnMet", 9999999));
 
         String userDirectoryString = System.getProperty("user.home");
         File userDirectory = new File(userDirectoryString);
