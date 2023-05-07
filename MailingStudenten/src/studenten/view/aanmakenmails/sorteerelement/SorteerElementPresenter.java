@@ -1,5 +1,12 @@
 package studenten.view.aanmakenmails.sorteerelement;
 
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
+import studenten.model.PeriodeResultaat;
+import studenten.model.Student;
+
+import java.util.Comparator;
+
 public class SorteerElementPresenter {
     private SorteerElementView view;
 

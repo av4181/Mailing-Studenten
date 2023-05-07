@@ -15,8 +15,8 @@ public class Main extends Application {
         Scene scene = new Scene(mainView);
         stage.setScene(scene);
         stage.setTitle("MailStudenten");
-        stage.setWidth(1920);
-        stage.setHeight(1080);
+        stage.setWidth(1200);
+        stage.setHeight(800);
         stage.setResizable(true);
         stage.show();
     }

@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.0.0">
+  <zoom_level>6</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>840</x>
+      <y>546</y>
+      <w>156</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>ApplicatieModel
+--
+csvBestand                          csvBestand
+email                                    Email
+
+
+
+--
+verstuurEmail()                     void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>972</x>
+      <y>390</y>
+      <w>132</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>Email
+--
+beoordeling              Beoordeling
+
+
+
+
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>900</x>
+      <y>234</y>
+      <w>132</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>Enum Kleurcode
+--
+GROEN
+GEEL
+ORANJE
+ROOD</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1050</x>
+      <y>234</y>
+      <w>126</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>MailInstelling
+--
+docent                     String
+periode                    String
+linkAfspraak            String
+
+
+
+
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1044</x>
+      <y>336</y>
+      <w>78</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;90.0;110.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>858</x>
+      <y>270</y>
+      <w>48</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>heeft een
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>744</x>
+      <y>390</y>
+      <w>156</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>CsvBestand
+--
+locatie                                          String
+bestandsnaam                             String
+inhoud                                         Map&lt;&gt;
+
+
+--
+leesBestand)                               Map&lt;&gt;
+getInhoud()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>852</x>
+      <y>282</y>
+      <w>60</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;80.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>1092</x>
+      <y>360</y>
+      <w>48</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>heeft een
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>924</x>
+      <y>486</y>
+      <w>120</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>180.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>990</x>
+      <y>510</y>
+      <w>48</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;create&gt;&gt;
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>816</x>
+      <y>510</y>
+      <w>48</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;create&gt;&gt;
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>804</x>
+      <y>486</y>
+      <w>114</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;170.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>840</x>
+      <y>690</y>
+      <w>156</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>ApplicatieController
+--
+
+link tussen model &amp; view
+
+
+--
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>864</x>
+      <y>642</y>
+      <w>18</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>954</x>
+      <y>786</y>
+      <w>18</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>840</x>
+      <y>834</y>
+      <w>156</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>ApplicatieView
+
+--
+
+UI
+
+
+--
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>864</x>
+      <y>786</y>
+      <w>18</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>954</x>
+      <y>642</y>
+      <w>18</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>474</x>
+      <y>234</y>
+      <w>156</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>StudentenResultaat
+--
+email                                         String
+voornaam                                 String
+naam                                        String
+rapportonderdeel     
+
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>540</x>
+      <y>330</y>
+      <w>288</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;460.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>702</x>
+      <y>234</y>
+      <w>156</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>Beoordeling
+--
+student                                     Student
+resultaten
+periode                                     String
+
+
+--
+bepaalKleurCode()               KleurCode
+maakEmail()                        Email</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>624</x>
+      <y>276</y>
+      <w>90</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1= *
+m2= 1
+krijgt een&gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;130.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>702</x>
+      <y>126</y>
+      <w>156</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>Student
+--
+email                                           String
+naam
+voornaam
+
+
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
