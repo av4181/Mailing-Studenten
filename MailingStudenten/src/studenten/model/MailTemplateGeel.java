@@ -1,31 +1,23 @@
 package studenten.model;
 
-import java.util.List;
-
 public class MailTemplateGeel extends MailTemplate {
-    public MailTemplateGeel(PeriodeResultaat periodeResultaat) {
-        super(periodeResultaat);
+    public MailTemplateGeel(String titel, String content) {
+        super(titel, content);
     }
 
     @Override
-    public String getTitel() {
+    protected String getTitelDefault() {
         return "Proficiat met je resultaat";
     }
 
     @Override
-    public String getContent() {
-        Student student = this.periodeResultaat.getStudent();
-
-        List<Resultaat> nietGeslaagdeResultaten = periodeResultaat.getNietGeslaagdeResultaten();
-
-        Resultaat nietGeslaagdResultaat = nietGeslaagdeResultaten.get(0);
-
+    protected String getContentDefault() {
         String content = "";
-        content += String.format("<p>Dag %s,</p>", student.getVoornaam());
-        content += String.format("<p>Je bent voor de meeste vakken geslaagd in de examens van %s. Jammer dat je niet slaagde voor %s (%.2f/20). Ga zeker naar het inzagerecht van dit vak.</p>", periodeResultaat.getPeriode(), nietGeslaagdResultaat.getRapportonderdeel(), nietGeslaagdResultaat.getPunt());
+        content += "<p>Dag ${student.voornaam},</p>";
+        content += "<p>Je bent voor de meeste vakken geslaagd in de examens van ${periode_resultaat.periode}. Jammer dat je niet slaagde voor ${periode_resultaat.niet_geslaagde_vakken}. Ga zeker naar het inzagerecht van dit vak.</p>";
         content += "<p>Doe zo verder.</p>";
         content += "<p>Met vriendelijke groeten,</p>";
-        content += String.format("<p>%s %s</p>", instelling.getDocentVoornaam(), instelling.getDocentAchternaam());
+        content += "<p>${instelling.docent_voornaam} ${instelling.docent_achternaam}</p>";
 
         return content;
     }

@@ -12,11 +12,11 @@ import java.util.List;
 
 public class UploadTablePresenter {
 
-    private CsvBestand model;
+    private List<Student> model;
     private UploadTableView view;
 
     public UploadTablePresenter(List<Student> model, UploadTableView view) {
-        this.model = (CsvBestand) model;
+        this.model = model;
         this.view = view;
 
         updateView();
