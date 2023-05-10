@@ -1,28 +1,46 @@
 package studenten.model;
 
 public abstract class MailTemplate {
-    protected PeriodeResultaat periodeResultaat;
-    protected Instelling instelling;
+    protected String titel;
+    protected String content;
 
-    public MailTemplate(PeriodeResultaat periodeResultaat) {
-        this.periodeResultaat = periodeResultaat;
-        this.instelling = new Instelling();
-    }
-
-    public static MailTemplate voorPeriodeResultaat(PeriodeResultaat periodeResultaat) {
-        PeriodeResultaat.KleurCode kleurCode = periodeResultaat.bepaalKleurCode();
-        if (kleurCode == PeriodeResultaat.KleurCode.GROEN) {
-            return new MailTemplateGroen(periodeResultaat);
-        } else if (kleurCode == PeriodeResultaat.KleurCode.GEEL) {
-            return new MailTemplateGeel(periodeResultaat);
-        } else if (kleurCode == PeriodeResultaat.KleurCode.ORANJE) {
-            return new MailTemplateOranje(periodeResultaat);
+    public MailTemplate(String titel, String content) {
+        if (titel.isEmpty()) {
+            this.titel = this.getTitelDefault();
         } else {
-            return new MailTemplateRood(periodeResultaat);
+            this.titel = titel;
+        }
+
+        if (content.isEmpty()) {
+            this.content = this.getContentDefault();
+        } else {
+            this.content = content;
         }
     }
 
-    public abstract String getTitel();
+    public static MailTemplate voorPeriodeResultaat(PeriodeResultaat periodeResultaat) {
+        Instelling instelling = new Instelling();
 
-    public abstract String getContent();
+        PeriodeResultaat.KleurCode kleurCode = periodeResultaat.bepaalKleurCode();
+        if (kleurCode == PeriodeResultaat.KleurCode.GROEN) {
+            return instelling.getMailTemplateGroen();
+        } else if (kleurCode == PeriodeResultaat.KleurCode.GEEL) {
+            return instelling.getMailTemplateGeel();
+        } else if (kleurCode == PeriodeResultaat.KleurCode.ORANJE) {
+            return instelling.getMailTemplateOranje();
+        } else {
+            return instelling.getMailTemplateRood();
+        }
+    }
+
+    public String getTitel() {
+        return this.titel;
+    }
+
+    public String getContent() {
+        return this.content;
+    }
+
+    protected abstract String getTitelDefault();
+    protected abstract String getContentDefault();
 }

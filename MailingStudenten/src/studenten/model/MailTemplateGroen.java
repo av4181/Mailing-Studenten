@@ -1,25 +1,23 @@
 package studenten.model;
 
 public class MailTemplateGroen extends MailTemplate {
-    public MailTemplateGroen(PeriodeResultaat periodeResultaat) {
-        super(periodeResultaat);
+    public MailTemplateGroen(String titel, String content) {
+        super(titel, content);
     }
 
     @Override
-    public String getTitel() {
+    protected String getTitelDefault() {
         return "Proficiat met je resultaat";
     }
 
     @Override
-    public String getContent() {
-        Student student = this.periodeResultaat.getStudent();
-
+    protected String getContentDefault() {
         String content = "";
-        content += String.format("<p>Dag %s,</p>", student.getVoornaam());
-        content += String.format("<p>Proficiat, je bent voor alle vakken geslaagd in de examens van %s.</p>", periodeResultaat.getPeriode());
+        content += "<p>Dag ${student.voornaam},</p>";
+        content += "<p>Proficiat, je bent voor alle vakken geslaagd in de examens van ${periode_resultaat.periode}.</p>";
         content += "<p>Doe zo verder.</p>";
         content += "<p>Met vriendelijke groeten,</p>";
-        content += String.format("<p>%s %s</p>", instelling.getDocentVoornaam(), instelling.getDocentAchternaam());
+        content += "<p>${instelling.docent_voornaam} ${instelling.docent_achternaam}</p>";
 
         return content;
     }

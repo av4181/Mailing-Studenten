@@ -1,24 +1,22 @@
 package studenten.model;
 
 public class MailTemplateRood extends MailTemplate {
-    public MailTemplateRood(PeriodeResultaat periodeResultaat) {
-        super(periodeResultaat);
+    public MailTemplateRood(String titel, String content) {
+        super(titel, content);
     }
 
     @Override
-    public String getTitel() {
+    protected String getTitelDefault() {
         return "Resultaten";
     }
 
     @Override
-    public String getContent() {
-        Student student = this.periodeResultaat.getStudent();
-
+    protected String getContentDefault() {
         String content = "";
-        content += String.format("<p>Dag %s,</p>", student.getVoornaam());
-        content += String.format("<p>Uit de resultaten van je examens van %s blijkt dat je voor geen enkel vak slaagde. Ik raad je sterk aan om op gesprek te komen. Boek een afspraak via deze link: %s</p>", periodeResultaat.getPeriode(), instelling.getLinkAfspraak());
+        content += "<p>Dag ${student.voornaam},</p>";
+        content += "<p>Uit de resultaten van je examens van ${periode_resultaat.periode} blijkt dat je voor geen enkel vak slaagde. Ik raad je sterk aan om op gesprek te komen. Boek een afspraak via deze link: ${instelling.link_afspraak}</p>";
         content += "<p>Met vriendelijke groeten,</p>";
-        content += String.format("<p>%s %s</p>", instelling.getDocentVoornaam(), instelling.getDocentAchternaam());
+        content += "<p>${instelling.docent_voornaam} ${instelling.docent_achternaam}</p>";
 
         return content;
     }

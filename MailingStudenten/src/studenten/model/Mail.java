@@ -8,6 +8,7 @@ import jakarta.mail.internet.MimeBodyPart;
 import jakarta.mail.internet.MimeMessage;
 import jakarta.mail.internet.MimeMultipart;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -16,19 +17,16 @@ import java.nio.file.Paths;
 
 public class Mail {
     private String bestemmingsEmailAdres;
-    private MailTemplate mailTemplate;
+    private VerstuurbareMailTemplate mailTemplate;
 
-    private Instelling instelling;
-
-    public Mail(String bestemmingsEmailAdres, MailTemplate mailTemplate, Instelling instelling) {
+    public Mail(String bestemmingsEmailAdres, VerstuurbareMailTemplate mailTemplate) {
         this.bestemmingsEmailAdres = bestemmingsEmailAdres;
         this.mailTemplate = mailTemplate;
-        this.instelling = instelling;
     }
 
-    public void opslaan() throws IOException, MessagingException {
-        Path directoryPath = Paths.get(this.instelling.getMailsAanmakenBestemming() + "/mails/" + mailTemplate.periodeResultaat.getPeriode());
-        Files.createDirectories(directoryPath);
+    public void opslaan(File bestand) throws IOException, MessagingException {
+//        Path directoryPath = Paths.get(this.instelling.getMailsAanmakenBestemming() + "/mails/" + mailTemplate.periodeResultaat.getPeriode());
+//        Files.createDirectories(directoryPath);
 
         Session session = Session.getInstance(System.getProperties());
         MimeMessage msg = new MimeMessage(session);
@@ -46,8 +44,12 @@ public class Mail {
 
         msg.setContent(multipart, "text/html");
 
-        Path filePath = Paths.get(directoryPath.toAbsolutePath() + "/" + mailTemplate.periodeResultaat.getStudent().getEmail() + ".eml");
+//        Path filePath = Paths.get(directoryPath.toAbsolutePath() + "/" + mailTemplate.periodeResultaat.getStudent().getEmail() + ".eml");
 
-        msg.writeTo(new FileOutputStream(filePath.toFile()));
+        File parentBestand = bestand.getParentFile();
+
+        parentBestand.mkdirs();
+
+        msg.writeTo(new FileOutputStream(bestand));
     }
 }
