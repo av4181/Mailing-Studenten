@@ -2,11 +2,11 @@ package studenten.model;
 
 import java.io.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class CsvBestand {
     public static final String pad = "/files/mailingstudenten.csv";
     public static final String delimiter = ";";
-
     private Map<Student,ArrayList<Resultaat>> studentLijst ;
     private final InputStream inputStream;
 
@@ -67,5 +67,12 @@ public class CsvBestand {
         }
 
         return studenten;
+    }
+
+    public List<CsvLijn> getAlleResultaten(){
+        List<CsvLijn> results = studentLijst.entrySet().stream()
+                .flatMap(entry -> entry.getValue().stream().map(resultaat -> new CsvLijn(entry.getKey(),resultaat)))
+                .collect(Collectors.toList());
+        return results;
     }
 }

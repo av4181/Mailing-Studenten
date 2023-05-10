@@ -4,22 +4,19 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.shape.Shape;
-import studenten.model.CsvBestand;
-import studenten.model.PeriodeResultaat;
-import studenten.model.Resultaat;
-import studenten.model.Student;
+import studenten.model.*;
 
 public class UploadTableView extends TableView {
 
-    private TableColumn<CsvBestand, String> emailklm;
-    private TableColumn<CsvBestand, String> voornaamklm;
-    private TableColumn<CsvBestand, String> naamklm;
-    private TableColumn<CsvBestand, String> rapportonderdeelklm;
-    private TableColumn<CsvBestand, String> deelgroepCodeklm;
-    private TableColumn<CsvBestand, String> puntklm;
-    private TableColumn<CsvBestand, String> examenkansomschrijvingklm;
-    private TableColumn<CsvBestand, String> kansaandeelklm;
-    private TableColumn<CsvBestand, String> periodeklm;
+    private TableColumn<CsvLijn, String> emailklm;
+    private TableColumn<CsvLijn, String> voornaamklm;
+    private TableColumn<CsvLijn, String> naamklm;
+    private TableColumn<CsvLijn, String> rapportonderdeelklm;
+    private TableColumn<CsvLijn, String> deelgroepCodeklm;
+    private TableColumn<CsvLijn, Double> puntklm;
+    private TableColumn<CsvLijn, String> examenkansomschrijvingklm;
+    private TableColumn<CsvLijn, String> kansaandeelklm;
+    private TableColumn<CsvLijn, String> periodeklm;
 
     public UploadTableView() {initialiseNodes();}
 
@@ -38,39 +35,39 @@ public class UploadTableView extends TableView {
                 puntklm,examenkansomschrijvingklm,kansaandeelklm,periodeklm);
     }
 
-    public TableColumn<CsvBestand, String> getEmailklm() {
+    public TableColumn<CsvLijn, String> getEmailklm() {
         return emailklm;
     }
 
-    public TableColumn<CsvBestand, String> getVoornaamklm() {
+    public TableColumn<CsvLijn, String> getVoornaamklm() {
         return voornaamklm;
     }
 
-    public TableColumn<CsvBestand, String> getNaamklm() {
+    public TableColumn<CsvLijn, String> getNaamklm() {
         return naamklm;
     }
 
-    public TableColumn<CsvBestand, String> getRapportonderdeelklm() {
+    public TableColumn<CsvLijn, String> getRapportonderdeelklm() {
         return rapportonderdeelklm;
     }
 
-    public TableColumn<CsvBestand, String> getDeelgroepCodeklm() {
+    public TableColumn<CsvLijn, String> getDeelgroepCodeklm() {
         return deelgroepCodeklm;
     }
 
-    public TableColumn<CsvBestand, String> getPuntklm() {
+    public TableColumn<CsvLijn, Double> getPuntklm() {
         return puntklm;
     }
 
-    public TableColumn<CsvBestand, String> getExamenkansomschrijvingklm() {
+    public TableColumn<CsvLijn, String> getExamenkansomschrijvingklm() {
         return examenkansomschrijvingklm;
     }
 
-    public TableColumn<CsvBestand, String> getKansaandeelklm() {
+    public TableColumn<CsvLijn, String> getKansaandeelklm() {
         return kansaandeelklm;
     }
 
-    public TableColumn<CsvBestand, String> getPeriodeklm() {
+    public TableColumn<CsvLijn, String> getPeriodeklm() {
         return periodeklm;
     }
 }

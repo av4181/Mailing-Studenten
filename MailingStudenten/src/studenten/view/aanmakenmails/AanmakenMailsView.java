@@ -1,22 +1,24 @@
 package studenten.view.aanmakenmails;
 
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import studenten.model.CsvBestand;
+import studenten.model.CsvLijn;
 import studenten.model.PeriodeResultaat;
 import studenten.model.Student;
 import studenten.view.aanmakenmails.kleurcodefilter.KleurCodeFilterPresenter;
 import studenten.view.aanmakenmails.kleurcodefilter.KleurCodeFilterView;
 import studenten.view.aanmakenmails.sorteerelement.SorteerElementPresenter;
 import studenten.view.aanmakenmails.sorteerelement.SorteerElementView;
-import studenten.view.aanmakenmails.table.AanmakenMailsTablePresenter;
-import studenten.view.aanmakenmails.table.AanmakenMailsTableView;
+import studenten.view.aanmakenmails.table.*;
 import studenten.view.aanmakenmails.table.UploadTablePresenter;
 import studenten.view.aanmakenmails.table.UploadTableView;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class AanmakenMailsView extends TabPane {
@@ -25,16 +27,23 @@ public class AanmakenMailsView extends TabPane {
     private SorteerElementView sorteerElementView;
     private AanmakenMailsTableView table;
 
-    // Toevoegen extra tabel om resultaat upload te laten zien
+    // Toevoegen extra tab om resultaat upload te laten zien
     private UploadTableView table2;
+
+    // Toevoegen extra tab om grafiek te laten zien
+    private GrafiekView barplot;
     private BorderPane actionsWrapper;
     private Button aanmakenMailsKnop;
     private VBox vBox;
 
     // Extra VBox voor tabel csv resultaten
     private VBox vBox2;
+
+    // Extra VBox voor grafiek
+    private VBox vBox3;
     private Tab uploadBestandTab;
     private Tab aanmakenMailsTab;
+    private Tab grafiekTab;
 
     public AanmakenMailsView() {
         initialiseNodes();
@@ -55,10 +64,15 @@ public class AanmakenMailsView extends TabPane {
         this.table = new AanmakenMailsTableView();
         new AanmakenMailsTablePresenter(periodeResultaten, this.table);
 
-        // Toevoegen resultaten uit upload csv in tableview van de upload tab
-
+//      Toevoegen resultaten uit upload csv in tableview van de upload tab
+        List<CsvLijn> csvLijnen = csv.getAlleResultaten();
         this.table2 = new UploadTableView();
-        new UploadTablePresenter(studenten, this.table2);
+        new UploadTablePresenter(csvLijnen, this.table2);
+
+//      Tab voor de grafiek
+        this.barplot = new GrafiekView();
+        new GrafiekPresenter(periodeResultaten, this.barplot);
+
 
         this.aanmakenMailsKnop = new Button("Aanmaken mails");
         this.actionsWrapper = new BorderPane();
@@ -78,14 +92,20 @@ public class AanmakenMailsView extends TabPane {
         this.vBox2 = new VBox();
         this.vBox2.getChildren().addAll(table2);
 
+        // Vullen Vbox3 met table3
+        this.vBox3 = new VBox();
+        this.vBox3.getChildren().addAll((Collection<? extends Node>) barplot);
 
-        // Toevoegen vBox2 aan uploadTab
+
+        // Toevoegen vBox-en aan tabs
         this.uploadBestandTab = new Tab("Upload bestand",this.vBox2);
         uploadBestandTab.setClosable(false);
         this.aanmakenMailsTab = new Tab("Aanmaken mails", this.vBox);
         aanmakenMailsTab.setClosable(false);
+        this.grafiekTab= new Tab("Grafiek", this.vBox3);
+        grafiekTab.setClosable(false);
 
-        this.getTabs().addAll(uploadBestandTab, aanmakenMailsTab);
+        this.getTabs().addAll(uploadBestandTab, aanmakenMailsTab,grafiekTab);
     }
 
     private void layoutNodes() {
@@ -133,4 +153,6 @@ public class AanmakenMailsView extends TabPane {
     Tab getAanmakenMailsTab() {
         return aanmakenMailsTab;
     }
+
+    Tab getGrafiekTab() {return grafiekTab;}
 }
