@@ -2,13 +2,11 @@ package studenten.view.aanmakenmails;
 
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.chart.BarChart;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import studenten.model.CsvBestand;
-import studenten.model.CsvLijn;
-import studenten.model.PeriodeResultaat;
-import studenten.model.Student;
+import studenten.model.*;
 import studenten.view.aanmakenmails.kleurcodefilter.KleurCodeFilterPresenter;
 import studenten.view.aanmakenmails.kleurcodefilter.KleurCodeFilterView;
 import studenten.view.aanmakenmails.sorteerelement.SorteerElementPresenter;
@@ -31,7 +29,7 @@ public class AanmakenMailsView extends TabPane {
     private UploadTableView table2;
 
     // Toevoegen extra tab om grafiek te laten zien
-    private GrafiekView barplot;
+    private GrafiekView barPlot;
     private BorderPane actionsWrapper;
     private Button aanmakenMailsKnop;
     private VBox vBox;
@@ -69,9 +67,11 @@ public class AanmakenMailsView extends TabPane {
         this.table2 = new UploadTableView();
         new UploadTablePresenter(csvLijnen, this.table2);
 
-//      Tab voor de grafiek
-        this.barplot = new GrafiekView();
-        new GrafiekPresenter(periodeResultaten, this.barplot);
+////      Tab voor de grafiek
+        Grafiek grafiek = new Grafiek();
+        GrafiekView plot = new GrafiekView();
+        grafiek.setgrafiekGegevens(periodeResultaten);
+        new GrafiekPresenter(plot,grafiek);
 
 
         this.aanmakenMailsKnop = new Button("Aanmaken mails");
@@ -93,9 +93,7 @@ public class AanmakenMailsView extends TabPane {
         this.vBox2.getChildren().addAll(table2);
 
         // Vullen Vbox3 met table3
-        this.vBox3 = new VBox();
-        this.vBox3.getChildren().addAll((Collection<? extends Node>) barplot);
-
+        this.vBox3 = new VBox(plot.getBarplot());
 
         // Toevoegen vBox-en aan tabs
         this.uploadBestandTab = new Tab("Upload bestand",this.vBox2);
