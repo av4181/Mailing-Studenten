@@ -1,25 +1,20 @@
 package studenten.view.aanmakenmails;
 
 import javafx.geometry.Insets;
-import javafx.scene.Node;
-import javafx.scene.chart.BarChart;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import studenten.model.*;
-import studenten.view.aanmakenmails.kleurcodefilter.KleurCodeFilterPresenter;
-import studenten.view.aanmakenmails.kleurcodefilter.KleurCodeFilterView;
 import studenten.view.aanmakenmails.table.*;
 import studenten.view.aanmakenmails.table.UploadTablePresenter;
 import studenten.view.aanmakenmails.table.UploadTableView;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class AanmakenMailsView extends TabPane {
     private BorderPane filterAndSorteerWrapper;
-    private KleurCodeFilterView kleurCodeFilterView;
     private AanmakenMailsTableView table;
 
     // Toevoegen extra tab om resultaat upload te laten zien
@@ -39,6 +34,9 @@ public class AanmakenMailsView extends TabPane {
     private Tab uploadBestandTab;
     private Tab aanmakenMailsTab;
     private Tab grafiekTab;
+    private HBox kleurCodeFilter;
+    private Label kleurCodeFilterOptiesLabel;
+    private ChoiceBox<String> kleurCodeFilterOpties;
 
     public AanmakenMailsView() {
         initialiseNodes();
@@ -74,13 +72,18 @@ public class AanmakenMailsView extends TabPane {
         this.aanmakenMailsKnop = new Button("Aanmaken mails");
         this.actionsWrapper = new BorderPane();
 
-        this.kleurCodeFilterView = new KleurCodeFilterView();
-        new KleurCodeFilterPresenter(kleurCodeFilterView);
 
-        this.filterAndSorteerWrapper = new BorderPane();
+        this.kleurCodeFilter = new HBox();
+        this.kleurCodeFilterOptiesLabel = new Label("Status");
+        this.kleurCodeFilterOpties = new ChoiceBox<>();
+        this.kleurCodeFilterOpties.getItems().add("Groen");
+        this.kleurCodeFilterOpties.getItems().add("Geel");
+        this.kleurCodeFilterOpties.getItems().add("Oranje");
+        this.kleurCodeFilterOpties.getItems().add("Rood");
+        this.kleurCodeFilter.getChildren().addAll(kleurCodeFilterOptiesLabel, kleurCodeFilterOpties);
 
         this.vBox = new VBox();
-        this.vBox.getChildren().addAll(filterAndSorteerWrapper, table, actionsWrapper);
+        this.vBox.getChildren().addAll(this.kleurCodeFilter, table, actionsWrapper);
 
         // Vullen Vbox2 met table2
         this.vBox2 = new VBox();
@@ -103,7 +106,7 @@ public class AanmakenMailsView extends TabPane {
     private void layoutNodes() {
         this.actionsWrapper.setRight(this.aanmakenMailsKnop);
 
-        this.filterAndSorteerWrapper.setLeft(this.kleurCodeFilterView);
+        this.kleurCodeFilter.setSpacing(10);
 
         this.vBox.setSpacing(10);
         this.vBox.setPadding(new Insets(10, 10, 10, 10));
@@ -119,10 +122,6 @@ public class AanmakenMailsView extends TabPane {
 
     BorderPane getActionsWrapper() {
         return actionsWrapper;
-    }
-
-    KleurCodeFilterView getKleurCodeFilterView() {
-        return kleurCodeFilterView;
     }
 
     BorderPane getFilterAndSorteerWrapper() {
@@ -142,4 +141,12 @@ public class AanmakenMailsView extends TabPane {
     }
 
     Tab getGrafiekTab() {return grafiekTab;}
+
+    Label getKleurCodeFilterOptiesLabel() {
+        return kleurCodeFilterOptiesLabel;
+    }
+
+    ChoiceBox<String> getKleurCodeFilterOpties() {
+        return kleurCodeFilterOpties;
+    }
 }

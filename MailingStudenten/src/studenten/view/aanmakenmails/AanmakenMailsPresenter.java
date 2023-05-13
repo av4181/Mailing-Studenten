@@ -1,6 +1,8 @@
 package studenten.view.aanmakenmails;
 
 import jakarta.mail.MessagingException;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import org.apache.commons.text.StringSubstitutor;
 import studenten.model.*;
@@ -13,9 +15,11 @@ import java.util.Iterator;
 import java.util.Map;
 
 public class AanmakenMailsPresenter {
+    private PeriodeResultaten model;
     private AanmakenMailsView view;
 
-    public AanmakenMailsPresenter(AanmakenMailsView view) {
+    public AanmakenMailsPresenter(PeriodeResultaten model, AanmakenMailsView view) {
+        this.model = model;
         this.view = view;
 
         updateView();
@@ -25,6 +29,25 @@ public class AanmakenMailsPresenter {
     private void updateView() {}
 
     private void addEventHandlers() {
+        this.view.getKleurCodeFilterOpties().getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                System.out.println(observableValue.getValue());
+                if (observableValue.getValue() == "Groen") {
+                    view.getTable().setItems(model.getGroeneResultaten());
+                }
+                if (observableValue.getValue() == "Geel") {
+                    view.getTable().setItems(model.getGeleResultaten());
+                }
+                if (observableValue.getValue() == "Oranje") {
+                    view.getTable().setItems(model.getOranjeResultaten());
+                }
+                if (observableValue.getValue() == "Rood") {
+                    view.getTable().setItems(model.getRodeResultaten());
+                }
+            }
+        });
+
         this.view.getAanmakenMailsKnop().setOnAction(actionEvent -> {
             try {
                 ObservableList<PeriodeResultaat> periodeResultaten = this.view.getTable().getItems();
