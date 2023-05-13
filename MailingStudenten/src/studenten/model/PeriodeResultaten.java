@@ -49,4 +49,8 @@ public class PeriodeResultaten {
             }
         });
     }
+
+    public ObservableList<PeriodeResultaat> getPeriodeResultaten() {
+        return periodeResultaten;
+    }
 }

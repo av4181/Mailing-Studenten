@@ -33,6 +33,9 @@ public class AanmakenMailsPresenter {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                 System.out.println(observableValue.getValue());
+                if (observableValue.getValue() == "Alle") {
+                    view.getTable().setItems(model.getPeriodeResultaten());
+                }
                 if (observableValue.getValue() == "Groen") {
                     view.getTable().setItems(model.getGroeneResultaten());
                 }

@@ -76,10 +76,12 @@ public class AanmakenMailsView extends TabPane {
         this.kleurCodeFilter = new HBox();
         this.kleurCodeFilterOptiesLabel = new Label("Status");
         this.kleurCodeFilterOpties = new ChoiceBox<>();
+        this.kleurCodeFilterOpties.getItems().add("Alle");
         this.kleurCodeFilterOpties.getItems().add("Groen");
         this.kleurCodeFilterOpties.getItems().add("Geel");
         this.kleurCodeFilterOpties.getItems().add("Oranje");
         this.kleurCodeFilterOpties.getItems().add("Rood");
+        this.kleurCodeFilterOpties.setValue("Alle");
         this.kleurCodeFilter.getChildren().addAll(kleurCodeFilterOptiesLabel, kleurCodeFilterOpties);
 
         this.vBox = new VBox();
