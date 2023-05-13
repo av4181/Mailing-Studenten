@@ -9,8 +9,6 @@ import javafx.scene.layout.VBox;
 import studenten.model.*;
 import studenten.view.aanmakenmails.kleurcodefilter.KleurCodeFilterPresenter;
 import studenten.view.aanmakenmails.kleurcodefilter.KleurCodeFilterView;
-import studenten.view.aanmakenmails.sorteerelement.SorteerElementPresenter;
-import studenten.view.aanmakenmails.sorteerelement.SorteerElementView;
 import studenten.view.aanmakenmails.table.*;
 import studenten.view.aanmakenmails.table.UploadTablePresenter;
 import studenten.view.aanmakenmails.table.UploadTableView;
@@ -22,7 +20,6 @@ import java.util.List;
 public class AanmakenMailsView extends TabPane {
     private BorderPane filterAndSorteerWrapper;
     private KleurCodeFilterView kleurCodeFilterView;
-    private SorteerElementView sorteerElementView;
     private AanmakenMailsTableView table;
 
     // Toevoegen extra tab om resultaat upload te laten zien
@@ -80,9 +77,6 @@ public class AanmakenMailsView extends TabPane {
         this.kleurCodeFilterView = new KleurCodeFilterView();
         new KleurCodeFilterPresenter(kleurCodeFilterView);
 
-        this.sorteerElementView = new SorteerElementView();
-        new SorteerElementPresenter(sorteerElementView);
-
         this.filterAndSorteerWrapper = new BorderPane();
 
         this.vBox = new VBox();
@@ -110,7 +104,6 @@ public class AanmakenMailsView extends TabPane {
         this.actionsWrapper.setRight(this.aanmakenMailsKnop);
 
         this.filterAndSorteerWrapper.setLeft(this.kleurCodeFilterView);
-        this.filterAndSorteerWrapper.setRight(this.sorteerElementView);
 
         this.vBox.setSpacing(10);
         this.vBox.setPadding(new Insets(10, 10, 10, 10));
@@ -130,10 +123,6 @@ public class AanmakenMailsView extends TabPane {
 
     KleurCodeFilterView getKleurCodeFilterView() {
         return kleurCodeFilterView;
-    }
-
-    SorteerElementView getSorteerElementView() {
-        return sorteerElementView;
     }
 
     BorderPane getFilterAndSorteerWrapper() {
