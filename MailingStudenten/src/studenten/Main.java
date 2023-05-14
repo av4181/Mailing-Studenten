@@ -8,9 +8,9 @@ import studenten.view.main.MainView;
 
 public class Main extends Application {
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) {
         MainView mainView = new MainView();
-        MainPresenter mainPresenter = new MainPresenter(mainView);
+        new MainPresenter(mainView);
 
         Scene scene = new Scene(mainView);
         stage.setScene(scene);

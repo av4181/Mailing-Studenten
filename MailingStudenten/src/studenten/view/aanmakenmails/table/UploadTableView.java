@@ -1,73 +1,71 @@
 package studenten.view.aanmakenmails.table;
 
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.shape.Shape;
 import studenten.model.*;
 
 public class UploadTableView extends TableView {
 
-    private TableColumn<CsvLijn, String> emailklm;
-    private TableColumn<CsvLijn, String> voornaamklm;
-    private TableColumn<CsvLijn, String> naamklm;
-    private TableColumn<CsvLijn, String> rapportonderdeelklm;
-    private TableColumn<CsvLijn, String> deelgroepCodeklm;
-    private TableColumn<CsvLijn, Double> puntklm;
-    private TableColumn<CsvLijn, String> examenkansomschrijvingklm;
-    private TableColumn<CsvLijn, String> kansaandeelklm;
-    private TableColumn<CsvLijn, String> periodeklm;
+    private TableColumn<CsvLijn, String> emailKolom;
+    private TableColumn<CsvLijn, String> voornaamKolom;
+    private TableColumn<CsvLijn, String> naamKolom;
+    private TableColumn<CsvLijn, String> rapportOnderdeelKolom;
+    private TableColumn<CsvLijn, String> deelgroepCodeKolom;
+    private TableColumn<CsvLijn, Double> puntKolom;
+    private TableColumn<CsvLijn, String> examenkansOmschrijvingKolom;
+    private TableColumn<CsvLijn, String> kansaandeelKolom;
+    private TableColumn<CsvLijn, String> periodeKolom;
 
     public UploadTableView() {initialiseNodes();}
 
     private void initialiseNodes() {
-        this.emailklm = new TableColumn<>("Email");
-        this.voornaamklm = new TableColumn<>("Voornaam");
-        this.naamklm = new TableColumn<>("Naam");
-        this.rapportonderdeelklm = new TableColumn<>("RapportOnderdeel");
-        this.deelgroepCodeklm = new TableColumn<>("DeelgroepCode");
-        this.puntklm = new TableColumn<>("Punt");
-        this.examenkansomschrijvingklm = new TableColumn<>("ExamenkansOmschrijving");
-        this.kansaandeelklm = new TableColumn<>("Kansaandeel");
-        this.periodeklm = new TableColumn<>("Periode");
+        this.emailKolom = new TableColumn<>("Email");
+        this.voornaamKolom = new TableColumn<>("Voornaam");
+        this.naamKolom = new TableColumn<>("Naam");
+        this.rapportOnderdeelKolom = new TableColumn<>("RapportOnderdeel");
+        this.deelgroepCodeKolom = new TableColumn<>("DeelgroepCode");
+        this.puntKolom = new TableColumn<>("Punt");
+        this.examenkansOmschrijvingKolom = new TableColumn<>("ExamenkansOmschrijving");
+        this.kansaandeelKolom = new TableColumn<>("Kansaandeel");
+        this.periodeKolom = new TableColumn<>("Periode");
 
-        this.getColumns().addAll(emailklm, voornaamklm, naamklm, rapportonderdeelklm, deelgroepCodeklm,
-                puntklm,examenkansomschrijvingklm,kansaandeelklm,periodeklm);
+        this.getColumns().addAll(emailKolom, voornaamKolom, naamKolom, rapportOnderdeelKolom, deelgroepCodeKolom,
+                puntKolom, examenkansOmschrijvingKolom, kansaandeelKolom, periodeKolom);
     }
 
-    public TableColumn<CsvLijn, String> getEmailklm() {
-        return emailklm;
+    TableColumn<CsvLijn, String> getEmailKolom() {
+        return emailKolom;
     }
 
-    public TableColumn<CsvLijn, String> getVoornaamklm() {
-        return voornaamklm;
+    TableColumn<CsvLijn, String> getVoornaamKolom() {
+        return voornaamKolom;
     }
 
-    public TableColumn<CsvLijn, String> getNaamklm() {
-        return naamklm;
+    TableColumn<CsvLijn, String> getNaamKolom() {
+        return naamKolom;
     }
 
-    public TableColumn<CsvLijn, String> getRapportonderdeelklm() {
-        return rapportonderdeelklm;
+    TableColumn<CsvLijn, String> getRapportOnderdeelKolom() {
+        return rapportOnderdeelKolom;
     }
 
-    public TableColumn<CsvLijn, String> getDeelgroepCodeklm() {
-        return deelgroepCodeklm;
+    TableColumn<CsvLijn, String> getDeelgroepCodeKolom() {
+        return deelgroepCodeKolom;
     }
 
-    public TableColumn<CsvLijn, Double> getPuntklm() {
-        return puntklm;
+    TableColumn<CsvLijn, Double> getPuntKolom() {
+        return puntKolom;
     }
 
-    public TableColumn<CsvLijn, String> getExamenkansomschrijvingklm() {
-        return examenkansomschrijvingklm;
+    TableColumn<CsvLijn, String> getExamenkansOmschrijvingKolom() {
+        return examenkansOmschrijvingKolom;
     }
 
-    public TableColumn<CsvLijn, String> getKansaandeelklm() {
-        return kansaandeelklm;
+    TableColumn<CsvLijn, String> getKansaandeelKolom() {
+        return kansaandeelKolom;
     }
 
-    public TableColumn<CsvLijn, String> getPeriodeklm() {
-        return periodeklm;
+    TableColumn<CsvLijn, String> getPeriodeKolom() {
+        return periodeKolom;
     }
 }

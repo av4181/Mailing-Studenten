@@ -1,5 +1,7 @@
 package studenten.view.instellingen.algemeen;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.stage.DirectoryChooser;
 import studenten.model.Bereik;
 import studenten.model.Instelling;
@@ -34,25 +36,32 @@ public class InstellingenAlgemeenPresenter {
     }
 
     private void addEventHandlers() {
-        view.getInstellingenOpslaanKnop().setOnAction(actionEvent -> {
-            this.model.setDocentVoornaam(view.getDocentVoornaamInput().getText());
-            this.model.setDocentAchternaam(view.getDocentAchternaamInput().getText());
-            this.model.setLinkAfspraak(view.getLinkAfspraakInput().getText());
-            this.model.setMailsAanmakenBestemming(view.getMailsAanmakenBestemmingInput().getText());
-            this.model.setBereikGroen(new Bereik(Integer.parseInt(view.getBereikGroenElement().getInputLaag().getText()), Integer.parseInt(view.getBereikGroenElement().getInputHoog().getText())));
-            this.model.setBereikGeel(new Bereik(Integer.parseInt(view.getBereikGeelElement().getInputLaag().getText()), Integer.parseInt(view.getBereikGeelElement().getInputHoog().getText())));
-            this.model.setBereikOranje(new Bereik(Integer.parseInt(view.getBereikOranjeElement().getInputLaag().getText()), Integer.parseInt(view.getBereikOranjeElement().getInputHoog().getText())));
-            this.model.setBereikRood(new Bereik(Integer.parseInt(view.getBereikRoodElement().getInputLaag().getText()), 9999999));
+        view.getInstellingenOpslaanKnop().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                model.setDocentVoornaam(view.getDocentVoornaamInput().getText());
+                model.setDocentAchternaam(view.getDocentAchternaamInput().getText());
+                model.setLinkAfspraak(view.getLinkAfspraakInput().getText());
+                model.setMailsAanmakenBestemming(view.getMailsAanmakenBestemmingInput().getText());
+                model.setBereikGroen(new Bereik(Integer.parseInt(view.getBereikGroenElement().getInputLaag().getText()), Integer.parseInt(view.getBereikGroenElement().getInputHoog().getText())));
+                model.setBereikGeel(new Bereik(Integer.parseInt(view.getBereikGeelElement().getInputLaag().getText()), Integer.parseInt(view.getBereikGeelElement().getInputHoog().getText())));
+                model.setBereikOranje(new Bereik(Integer.parseInt(view.getBereikOranjeElement().getInputLaag().getText()), Integer.parseInt(view.getBereikOranjeElement().getInputHoog().getText())));
+                model.setBereikRood(new Bereik(Integer.parseInt(view.getBereikRoodElement().getInputLaag().getText()), 9999999));
 
-            this.model.opslaan();
+                model.opslaan();
+            }
         });
-        view.getKiesMailsAanmakenBestemmingKnop().setOnAction(actionEvent -> {
-            DirectoryChooser directoryChooser = new DirectoryChooser();
 
-            directoryChooser.setInitialDirectory(new File(this.model.getMailsAanmakenBestemming()));
-            File chosenDirectory = directoryChooser.showDialog(null);
-            if (chosenDirectory != null) {
-                view.getMailsAanmakenBestemmingInput().setText(chosenDirectory.getAbsolutePath());
+        view.getKiesMailsAanmakenBestemmingKnop().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                DirectoryChooser directoryChooser = new DirectoryChooser();
+
+                directoryChooser.setInitialDirectory(new File(model.getMailsAanmakenBestemming()));
+                File chosenDirectory = directoryChooser.showDialog(null);
+                if (chosenDirectory != null) {
+                    view.getMailsAanmakenBestemmingInput().setText(chosenDirectory.getAbsolutePath());
+                }
             }
         });
     }

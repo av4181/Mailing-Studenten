@@ -6,7 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import studenten.view.instellingen.BereikElement;
+import studenten.model.BereikElement;
 
 public class InstellingenAlgemeenView extends GridPane {
     private Label docentVoornaamLabel;
@@ -15,12 +15,9 @@ public class InstellingenAlgemeenView extends GridPane {
     private TextField docentAchternaamInput;
     private Label linkAfspraakLabel;
     private TextField linkAfspraakInput;
-
     private Label mailsAanmakenBestemmingLabel;
-
     private TextField mailsAanmakenBestemmingInput;
     private Button kiesMailsAanmakenBestemmingKnop;
-
     private BereikElement bereikGroenElement;
     private BereikElement bereikGeelElement;
     private BereikElement bereikOranjeElement;
@@ -56,9 +53,6 @@ public class InstellingenAlgemeenView extends GridPane {
     }
 
     private void layoutNodes() {
-        this.docentAchternaamInput.setMinWidth(500);
-        this.linkAfspraakInput.setMinWidth(500);
-
         this.add(docentVoornaamLabel, 0, 0);
         this.add(docentVoornaamInput, 1, 0);
         this.add(docentAchternaamLabel, 0, 1);
@@ -124,26 +118,31 @@ public class InstellingenAlgemeenView extends GridPane {
         return instellingenOpslaanKnop;
     }
 
+    Label getMailsAanmakenBestemmingLabel() {
+        return mailsAanmakenBestemmingLabel;
+    }
+
     TextField getMailsAanmakenBestemmingInput() {
         return this.mailsAanmakenBestemmingInput;
     }
+
     Button getKiesMailsAanmakenBestemmingKnop() {
         return this.kiesMailsAanmakenBestemmingKnop;
     }
 
-    public BereikElement getBereikGroenElement() {
+    BereikElement getBereikGroenElement() {
         return bereikGroenElement;
     }
 
-    public BereikElement getBereikGeelElement() {
+    BereikElement getBereikGeelElement() {
         return bereikGeelElement;
     }
 
-    public BereikElement getBereikOranjeElement() {
+    BereikElement getBereikOranjeElement() {
         return bereikOranjeElement;
     }
 
-    public BereikElement getBereikRoodElement() {
+    BereikElement getBereikRoodElement() {
         return bereikRoodElement;
     }
 }

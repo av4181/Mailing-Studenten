@@ -22,8 +22,6 @@ public class InstellingenTemplatesView extends GridPane {
     }
 
     private void initialiseNodes() {
-        this.setPadding(new Insets(10, 10, 10, 10));
-
         this.templateGroenLabel = new Label("Template groen");
         this.bewerkTemplateGroenKnop = new Button("Bewerk");
         this.bewerkTemplateGroenKnop.setId(PeriodeResultaat.KleurCode.GROEN.toString());
@@ -39,6 +37,12 @@ public class InstellingenTemplatesView extends GridPane {
         this.templateRoodLabel = new Label("Template rood");
         this.bewerkTemplateRoodKnop = new Button("Bewerk");
         this.bewerkTemplateRoodKnop.setId(PeriodeResultaat.KleurCode.ROOD.toString());
+    }
+
+    private void layoutNodes() {
+        this.setPadding(new Insets(10, 10, 10, 10));
+        this.setVgap(10);
+        this.setHgap(10);
 
         this.add(templateGroenLabel, 0, 0);
         this.add(bewerkTemplateGroenKnop, 1, 0);
@@ -50,40 +54,35 @@ public class InstellingenTemplatesView extends GridPane {
         this.add(bewerkTemplateRoodKnop, 1, 3);
     }
 
-    private void layoutNodes() {
-        this.setVgap(10);
-        this.setHgap(10);
-    }
-
-    public Label getTemplateGroenLabel() {
+    Label getTemplateGroenLabel() {
         return templateGroenLabel;
     }
 
-    public Button getBewerkTemplateGroenKnop() {
+    Button getBewerkTemplateGroenKnop() {
         return bewerkTemplateGroenKnop;
     }
 
-    public Label getTemplateGeelLabel() {
+    Label getTemplateGeelLabel() {
         return templateGeelLabel;
     }
 
-    public Button getBewerkTemplateGeelKnop() {
+    Button getBewerkTemplateGeelKnop() {
         return bewerkTemplateGeelKnop;
     }
 
-    public Label getTemplateOranjeLabel() {
+    Label getTemplateOranjeLabel() {
         return templateOranjeLabel;
     }
 
-    public Button getBewerkTemplateOranjeKnop() {
+    Button getBewerkTemplateOranjeKnop() {
         return bewerkTemplateOranjeKnop;
     }
 
-    public Label getTemplateRoodLabel() {
+    Label getTemplateRoodLabel() {
         return templateRoodLabel;
     }
 
-    public Button getBewerkTemplateRoodKnop() {
+    Button getBewerkTemplateRoodKnop() {
         return bewerkTemplateRoodKnop;
     }
 }

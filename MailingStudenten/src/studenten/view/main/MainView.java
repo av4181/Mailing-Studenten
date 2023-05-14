@@ -4,15 +4,7 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
-import studenten.model.CsvBestand;
-import studenten.model.PeriodeResultaat;
-import studenten.model.PeriodeResultaten;
-import studenten.model.Student;
-import studenten.view.aanmakenmails.AanmakenMailsPresenter;
 import studenten.view.aanmakenmails.AanmakenMailsView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainView extends BorderPane {
     private Menu menu;
@@ -26,16 +18,6 @@ public class MainView extends BorderPane {
     }
 
     private void initialiseNodes() {
-        CsvBestand csv = new CsvBestand();
-        csv.leesBestand();
-
-        List<Student> studenten = csv.getStudenten();
-
-        List<PeriodeResultaat> periodeResultaten = new ArrayList<>();
-        for (Student student: studenten) {
-            periodeResultaten.addAll(student.getPeriodeResultaten());
-        }
-
         this.menu = new Menu("Instellingen");
         this.instellingenMenuItem = new MenuItem("Instellingen");
 
@@ -45,7 +27,6 @@ public class MainView extends BorderPane {
         this.menuBar.getMenus().add(menu);
 
         this.aanmakenMailsView = new AanmakenMailsView();
-        new AanmakenMailsPresenter(new PeriodeResultaten(periodeResultaten), aanmakenMailsView);
     }
 
     private void layoutNodes() {
@@ -63,5 +44,9 @@ public class MainView extends BorderPane {
 
     MenuBar getMenuBar() {
         return menuBar;
+    }
+
+    AanmakenMailsView getAanmakenMailsView() {
+        return aanmakenMailsView;
     }
 }
