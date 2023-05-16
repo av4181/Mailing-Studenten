@@ -56,14 +56,14 @@ public class AanmakenMailsView extends TabPane {
 
         this.grafiekVBox = new VBox(barPlot.getBarplot());
 
-        this.uploadBestandTab = new Tab("Upload bestand",this.uploadVBox);
-        uploadBestandTab.setClosable(false);
+//        this.uploadBestandTab = new Tab("Upload bestand",this.uploadVBox);
+//        uploadBestandTab.setClosable(false);
         this.aanmakenMailsTab = new Tab("Aanmaken mails", this.vBox);
         aanmakenMailsTab.setClosable(false);
         this.grafiekTab = new Tab("Grafiek", this.grafiekVBox);
         grafiekTab.setClosable(false);
 
-        this.getTabs().addAll(uploadBestandTab, aanmakenMailsTab,grafiekTab);
+        this.getTabs().addAll(aanmakenMailsTab,grafiekTab);
     }
 
     private void layoutNodes() {

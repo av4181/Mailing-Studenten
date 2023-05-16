@@ -2,21 +2,14 @@ package studenten.view.main;
 
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
-import studenten.view.aanmakenmails.table.AanmakenMailsTableView;
-import studenten.view.aanmakenmails.table.GrafiekView;
-import studenten.view.aanmakenmails.table.UploadTableView;
 
 import java.io.File;
 
-public class UploadFileView {
+public class UploadFileView extends VBox {
     private BorderPane actionsWrapper;
     private FileChooser fileChooser;
     private File gekozenBestand;
@@ -25,6 +18,7 @@ public class UploadFileView {
     private Label bestandNaamLabel;
     private ChoiceBox choiceBoxDelimiter;
     private TableView tabel;
+    private Button acceptButton;
 
     private static final int VENSTER_BREEDTE = 500;
     private static final int VENSTER_HOOGTE = 300;
@@ -44,53 +38,55 @@ public class UploadFileView {
                 "Delimiter: Tab", "Delimiter: Komma", "Delimiter: Spatie")
         );
         this.tabel = new TableView<>();
-        //Maak knoppen even breed
-        this.selecteerBestandKnop.setMaxWidth(VENSTER_BREEDTE / 2);
-        this.bestandNaamLabel.setMaxWidth(VENSTER_BREEDTE / 2);
-        this.choiceBoxDelimiter.setMaxWidth(VENSTER_BREEDTE / 2);
+        this.acceptButton = new Button("Accepteer");
 
-        VBox buttonBox = new VBox();
-        buttonBox.setPadding(new Insets(10, 10, 10, 10));  //Sets the space around the buttonBox.
-        buttonBox.setSpacing(10);  //Sets the vertical space in pixels between buttons within the box.
-
-        buttonBox.getChildren().addAll(
+        this.getChildren().addAll(
                 selecteerBestandKnop,
                 bestandNaamLabel,
                 choiceBoxDelimiter,
                 leesCsvKnop,
-                tabel
+                tabel,
+                acceptButton
         );
     }
 
     private void layoutNodes() {
-
+        //Maak knoppen even breed
+        this.selecteerBestandKnop.setMaxWidth(VENSTER_BREEDTE / 2);
+        this.bestandNaamLabel.setMaxWidth(VENSTER_BREEDTE / 2);
+        this.choiceBoxDelimiter.setMaxWidth(VENSTER_BREEDTE / 2);
+        this.setPadding(new Insets(10, 10, 10, 10));
+        this.setSpacing(10);
     }
 
-    public BorderPane getActionsWrapper() {
+    BorderPane getActionsWrapper() {
         return actionsWrapper;
     }
 
-    public FileChooser getFileChooser() {
+    FileChooser getFileChooser() {
         return fileChooser;
     }
 
-    public Button getSelecteerBestandKnop() {
+    Button getSelecteerBestandKnop() {
         return selecteerBestandKnop;
     }
 
-    public Button getLeesCsvKnop() {
+    Button getLeesCsvKnop() {
         return leesCsvKnop;
     }
 
-    public Label getBestandNaamLabel() {
+    Label getBestandNaamLabel() {
         return bestandNaamLabel;
     }
 
-    public ChoiceBox getChoiceBoxDelimiter() {
+    ChoiceBox getChoiceBoxDelimiter() {
         return choiceBoxDelimiter;
     }
 
-    public File getGekozenBestand() {
+    File getGekozenBestand() {
         return gekozenBestand;
+    }
+    Button getAcceptButton() {
+        return acceptButton;
     }
 }

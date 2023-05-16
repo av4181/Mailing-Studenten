@@ -40,6 +40,15 @@ public class UploadFilePresenter {
                 // TO DO
             }
         });
+        this.view.getAcceptButton().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                MainView mainView = new MainView();
+                new MainPresenter(mainView);
+
+                view.getScene().setRoot(mainView);
+            }
+        });
     }
 
 }

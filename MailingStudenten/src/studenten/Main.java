@@ -17,6 +17,8 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.StageStyle;
+import studenten.view.main.UploadFilePresenter;
+import studenten.view.main.UploadFileView;
 
 import javax.swing.Timer;
 import java.awt.event.ActionListener;
@@ -46,12 +48,10 @@ public class Main extends Application {
         splashStage.show();
 
 
+        UploadFileView uploadFileView = new UploadFileView();
+        new UploadFilePresenter(uploadFileView);
 
-
-        MainView mainView = new MainView();
-        new MainPresenter(mainView);
-
-        Scene scene = new Scene(mainView);
+        Scene scene = new Scene(uploadFileView);
         stage.setScene(scene);
         stage.setTitle("MailStudenten");
         stage.setWidth(1200);
