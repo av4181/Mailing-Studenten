@@ -18,7 +18,7 @@ public class MainView extends BorderPane {
     }
 
     private void initialiseNodes() {
-        this.menu = new Menu("Instellingen");
+        this.menu = new Menu("Bewerken");
         this.instellingenMenuItem = new MenuItem("Instellingen");
 
         this.menu.getItems().addAll(instellingenMenuItem);

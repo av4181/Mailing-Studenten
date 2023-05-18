@@ -39,8 +39,8 @@ public class InstellingenAlgemeenView extends GridPane {
         this.linkAfspraakLabel = new Label("Link afspraak");
         this.linkAfspraakInput = new TextField();
 
-        this.mailsAanmakenBestemmingLabel = new Label("Bestemming");
-        this.mailsAanmakenBestemmingInput = new TextField("Mails bestemming");
+        this.mailsAanmakenBestemmingLabel = new Label("Mails bestemming");
+        this.mailsAanmakenBestemmingInput = new TextField();
         this.mailsAanmakenBestemmingInput.setDisable(true);
         this.kiesMailsAanmakenBestemmingKnop = new Button("Kies bestemming");
 
