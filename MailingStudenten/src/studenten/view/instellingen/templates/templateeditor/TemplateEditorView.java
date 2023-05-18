@@ -1,4 +1,4 @@
-package studenten.view.instellingen.templates;
+package studenten.view.instellingen.templates.templateeditor;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -42,5 +42,29 @@ public class TemplateEditorView extends VBox {
 
         this.templateContent.setMaxWidth(800);
         this.templateContent.setMaxHeight(500);
+    }
+
+    Label getTemplateTitelLabel() {
+        return templateTitelLabel;
+    }
+
+    TextField getTemplateTitel() {
+        return templateTitel;
+    }
+
+    Label getTemplateContentLabel() {
+        return templateContentLabel;
+    }
+
+    HTMLEditor getTemplateContent() {
+        return templateContent;
+    }
+
+    VBox getTemplateOpslaanKnopWrapper() {
+        return templateOpslaanKnopWrapper;
+    }
+
+    Button getTemplateOpslaanKnop() {
+        return templateOpslaanKnop;
     }
 }
