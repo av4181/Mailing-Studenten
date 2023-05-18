@@ -5,8 +5,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class CsvBestand {
-    public static final String pad = "/files/mailingstudenten.csv";
-    public static final String delimiter = ";";
+    private String pad = "/files/mailingstudenten.csv";
+    private String delimiter = ";";
     private Map<Student,ArrayList<Resultaat>> studentLijst ;
     private final InputStream inputStream;
 
@@ -74,5 +74,13 @@ public class CsvBestand {
                 .flatMap(entry -> entry.getValue().stream().map(resultaat -> new CsvLijn(entry.getKey(),resultaat)))
                 .collect(Collectors.toList());
         return results;
+    }
+
+    public void setPad(String pad) {
+        this.pad = pad;
+    }
+
+    public void setDelimiter(String delimiter) {
+        this.delimiter = delimiter;
     }
 }

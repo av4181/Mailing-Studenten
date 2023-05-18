@@ -89,4 +89,8 @@ public class UploadFileView extends VBox {
     Button getAcceptButton() {
         return acceptButton;
     }
+
+    public TableView getTabel() {
+        return tabel;
+    }
 }
