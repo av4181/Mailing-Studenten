@@ -70,11 +70,10 @@ public class AanmakenMailsTablePresenter {
                     }
                     return 1;
                 } catch (ParseException e) {
-                    throw new RuntimeException(e);
+                    return -1;
                 }
             }
         });
-
         this.view.getPeriodeKolom().setCellValueFactory(new Callback<TableColumn.CellDataFeatures<PeriodeResultaat, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TableColumn.CellDataFeatures<PeriodeResultaat, String> periodeResultaatStringCellDataFeatures) {
@@ -87,14 +86,33 @@ public class AanmakenMailsTablePresenter {
                 Rectangle rect = new Rectangle(30, 10, 10, 10);
                 if (periodeResultaatShapeCellDataFeatures.getValue().bepaalKleurCode() == PeriodeResultaat.KleurCode.GROEN) {
                     rect.setFill(Color.GREEN);
+                    rect.setId(String.valueOf(PeriodeResultaat.KleurCode.GROEN.ordinal()));
                 } else if (periodeResultaatShapeCellDataFeatures.getValue().bepaalKleurCode() == PeriodeResultaat.KleurCode.GEEL) {
                     rect.setFill(Color.YELLOW);
+                    rect.setId(String.valueOf(PeriodeResultaat.KleurCode.GEEL.ordinal()));
                 } else if (periodeResultaatShapeCellDataFeatures.getValue().bepaalKleurCode() == PeriodeResultaat.KleurCode.ORANJE) {
                     rect.setFill(Color.ORANGE);
+                    rect.setId(String.valueOf(PeriodeResultaat.KleurCode.ORANJE.ordinal()));
                 } else if (periodeResultaatShapeCellDataFeatures.getValue().bepaalKleurCode() == PeriodeResultaat.KleurCode.ROOD) {
                     rect.setFill(Color.RED);
+                    rect.setId(String.valueOf(PeriodeResultaat.KleurCode.ROOD.ordinal()));
                 }
                 return new SimpleObjectProperty<>(rect);
+            }
+        });
+        this.view.getKleurCodeKolom().setComparator(new Comparator<Shape>() {
+            @Override
+            public int compare(Shape o1, Shape o2) {
+                int shape1Id = Integer.parseInt(o1.getId());
+                int shape2Id = Integer.parseInt(o2.getId());
+
+                if (shape1Id == shape2Id) {
+                    return 0;
+                }
+                if (shape1Id < shape2Id) {
+                    return -1;
+                }
+                return 1;
             }
         });
 
