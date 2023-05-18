@@ -20,12 +20,16 @@ public class GrafiekView {
     }
 
     public void initialiseNodes(){
-        xAs.setCategories(FXCollections.<String>observableArrayList(Arrays.asList(
-                "Groen", "Geel", "Oranje", "Rood")));
-        xAs.setLabel("Kleur");
+        xAs.setCategories(FXCollections.<String>observableArrayList(Arrays.asList("Groen", "Geel", "Oranje", "Rood")));
+        xAs.setLabel("Kleurcode");
         yAs.setLabel("Aantal studenten");
+        yAs.setMinorTickVisible(false);
+        yAs.setTickUnit(1);
+        yAs.setAutoRanging(false);
         this.barplot = new BarChart<>(xAs, yAs);
         this.barplot.setTitle("Overzicht");
+        this.barplot.setLegendVisible(false);
+        this.barplot.setCategoryGap(200);
     }
     public void layoutNodes(){}
 
