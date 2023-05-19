@@ -40,7 +40,7 @@ public class UploadFilePresenter {
                 selectedFile = fileChooser.showOpenDialog(null);
                 view.getBestandNaamLabel().setText(selectedFile.getName());
                 file = new CsvBestand();
-                file.setPad("/files/" + selectedFile.getName());
+                file.setPad(selectedFile.getName());
             }
         });
 
@@ -49,10 +49,10 @@ public class UploadFilePresenter {
             @Override
             public void handle(ActionEvent arg0) {
                 file.leesBestand();
-//                List<CsvLijn> csvLijnen = file.getAlleResultaten();
-//                UploadTableView tabel = new UploadTableView();
-//                UploadTablePresenter tabelPresenter = new UploadTablePresenter(csvLijnen, tabel);
-//                view.getTabel().setItems(tabel.getColumns());
+                List<CsvLijn> csvLijnen = file.getAlleResultaten();
+                UploadTableView tabel = new UploadTableView();
+                UploadTablePresenter tabelPresenter = new UploadTablePresenter(csvLijnen, tabel);
+                view.getTabel().setItems(tabel.getColumns());
             }
         });
         this.view.getAcceptButton().setOnAction(new EventHandler<ActionEvent>() {

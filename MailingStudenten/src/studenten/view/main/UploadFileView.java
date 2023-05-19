@@ -6,6 +6,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
+import studenten.view.aanmakenmails.table.UploadTableView;
 
 import java.io.File;
 
@@ -17,7 +18,7 @@ public class UploadFileView extends VBox {
     private Button leesCsvKnop;
     private Label bestandNaamLabel;
     private ChoiceBox choiceBoxDelimiter;
-    private TableView tabel;
+    private UploadTableView tabel;
     private Button acceptButton;
 
     private static final int VENSTER_BREEDTE = 500;
@@ -37,7 +38,7 @@ public class UploadFileView extends VBox {
         this.choiceBoxDelimiter = new ChoiceBox(FXCollections.observableArrayList(
                 "Delimiter: Tab", "Delimiter: Komma", "Delimiter: Spatie")
         );
-        this.tabel = new TableView<>();
+        this.tabel = new UploadTableView();
         this.acceptButton = new Button("Accepteer");
 
         this.getChildren().addAll(
@@ -90,7 +91,7 @@ public class UploadFileView extends VBox {
         return acceptButton;
     }
 
-    public TableView getTabel() {
+    public UploadTableView getTabel() {
         return tabel;
     }
 }
