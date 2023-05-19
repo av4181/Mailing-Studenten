@@ -1,6 +1,9 @@
 package studenten.view.aanmakenmails.table;
 
+import javafx.scene.chart.XYChart;
 import studenten.model.Grafiek;
+
+import java.util.List;
 
 public class GrafiekPresenter {
     private Grafiek model;
@@ -13,6 +16,19 @@ public class GrafiekPresenter {
         updateView();
     }
     private void updateView(){
-        this.view.getBarplot().getData().addAll(this.model.getGroen(),this.model.getGeel(),this.model.getOranje(),this.model.getRood());
+        List<XYChart.Data<String, Number>> test = this.model.getSeries().getData();
+
+        double maxValue = 0;
+        for (XYChart.Data<String, Number> item : test) {
+            if ((int) item.getYValue() > maxValue) {
+                maxValue = (int) item.getYValue();
+            }
+        }
+
+        maxValue = Math.ceil(maxValue / 10) * 10;
+
+        this.view.getyAs().setUpperBound(maxValue);
+
+        this.view.getBarplot().getData().addAll(this.model.getSeries());
     }
 }

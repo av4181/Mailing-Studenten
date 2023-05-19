@@ -52,6 +52,7 @@ public class Main extends Application {
         new UploadFilePresenter(uploadFileView);
 
         Scene scene = new Scene(uploadFileView);
+        scene.getStylesheets().add("css/Barchart.css");
         stage.setScene(scene);
         stage.setTitle("MailStudenten");
         stage.setWidth(1200);

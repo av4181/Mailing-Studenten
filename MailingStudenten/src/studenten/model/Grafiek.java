@@ -7,17 +7,13 @@ import java.util.List;
 
 public class Grafiek {
     private List<PeriodeResultaat> resultaten;
-    private XYChart.Series<String,Number> groen = new XYChart.Series<>();;
-    private XYChart.Series<String,Number> geel = new XYChart.Series<>();;
-    private XYChart.Series<String,Number> oranje = new XYChart.Series<>();;
-    private XYChart.Series<String,Number> rood = new XYChart.Series<>();;
+    private XYChart.Series<String,Number> series = new XYChart.Series<>();;
     private final String grafiekTitel = "Overzicht";
     private final String xAsLabel = "Periode resultaten";
     private final String yAsLabel = "Aantal studenten";
 
     public Grafiek() {
         this.resultaten = new ArrayList<>();
-        setgrafiekGegevens(resultaten);
     }
 
     public void setgrafiekGegevens(List<PeriodeResultaat> resultaten) {
@@ -39,36 +35,20 @@ public class Grafiek {
                 case ROOD:
                     rood += 1;
             }
-            this.groen.setName("Groen");
-            this.groen.getData().add(new XYChart.Data<>("Groen",groen));
-            this.geel.setName("Geel");
-            this.geel.getData().add(new XYChart.Data<>("Geel",geel));
-            this.oranje.setName("Oranje");
-            this.oranje.getData().add(new XYChart.Data<>("Oranje",oranje));
-            this.rood.setName("Rood");
-            this.rood.getData().add(new XYChart.Data<>("Rood",rood));
         }
-
+        this.series.setName("test");
+        this.series.getData().add(new XYChart.Data<>("Groen",groen));
+        this.series.getData().add(new XYChart.Data<>("Geel",geel));
+        this.series.getData().add(new XYChart.Data<>("Oranje",oranje));
+        this.series.getData().add(new XYChart.Data<>("Rood",rood));
     }
 
     public List<PeriodeResultaat> getResultaten() {
         return resultaten;
     }
 
-    public XYChart.Series<String, Number> getGroen() {
-        return groen;
-    }
-
-    public XYChart.Series<String, Number> getGeel() {
-        return geel;
-    }
-
-    public XYChart.Series<String, Number> getOranje() {
-        return oranje;
-    }
-
-    public XYChart.Series<String, Number> getRood() {
-        return rood;
+    public XYChart.Series<String, Number> getSeries() {
+        return series;
     }
 
     public String getGrafiekTitel() {
