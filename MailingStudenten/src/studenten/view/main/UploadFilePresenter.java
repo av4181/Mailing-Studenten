@@ -1,17 +1,14 @@
 package studenten.view.main;
 
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.FileChooser;
 import studenten.model.CsvBestand;
 import studenten.model.CsvLijn;
-import studenten.model.PeriodeResultaat;
-import studenten.view.aanmakenmails.table.AanmakenMailsTablePresenter;
 import studenten.view.aanmakenmails.table.UploadTablePresenter;
-import studenten.view.aanmakenmails.table.UploadTableView;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UploadFilePresenter {
@@ -26,7 +23,8 @@ public class UploadFilePresenter {
         addEventHandlers();
     }
     private void updateView() {
-
+        // We initialiseren de upload tabel met niets erin.
+        new UploadTablePresenter(new ArrayList<>(), this.view.getTabel());
     }
     private void addEventHandlers() {
         this.view.getSelecteerBestandKnop().setOnAction(new EventHandler<ActionEvent>() {
@@ -50,9 +48,7 @@ public class UploadFilePresenter {
             public void handle(ActionEvent arg0) {
                 file.leesBestand();
                 List<CsvLijn> csvLijnen = file.getAlleResultaten();
-                UploadTableView tabel = new UploadTableView();
-                UploadTablePresenter tabelPresenter = new UploadTablePresenter(csvLijnen, tabel);
-                view.getTabel().setItems(tabel.getColumns());
+                view.getTabel().getItems().addAll(csvLijnen);
             }
         });
         this.view.getAcceptButton().setOnAction(new EventHandler<ActionEvent>() {

@@ -5,8 +5,6 @@ import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import studenten.view.main.MainPresenter;
-import studenten.view.main.MainView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Border;
@@ -46,7 +44,6 @@ public class Main extends Application {
         splashStage.initStyle(StageStyle.UNDECORATED );
 
         splashStage.show();
-
 
         UploadFileView uploadFileView = new UploadFileView();
         new UploadFilePresenter(uploadFileView);
