@@ -11,7 +11,6 @@ public class Instelling {
     private Bereik bereikGroen;
     private Bereik bereikGeel;
     private Bereik bereikOranje;
-    private Bereik bereikRood;
     private MailTemplate mailTemplateGroen;
     private MailTemplate mailTemplateGeel;
     private MailTemplate mailTemplateOranje;
@@ -29,7 +28,6 @@ public class Instelling {
         this.bereikGroen = new Bereik(preferences.getInt("groenVanaf", 0), preferences.getInt("groenTotEnMet", 0));
         this.bereikGeel = new Bereik(preferences.getInt("geelVanaf", 1), preferences.getInt("geelTotEnMet", 1));
         this.bereikOranje = new Bereik(preferences.getInt("oranjeVanaf", 2), preferences.getInt("oranjeTotEnMet", 2));
-        this.bereikRood = new Bereik(preferences.getInt("roodVanaf", 3), preferences.getInt("roodTotEnMet", 9999999));
 
         this.mailTemplateGroen = new MailTemplateGroen(preferences.get("mailTemplateGroenTitel", ""), preferences.get("mailTemplateGroenContent", ""));
         this.mailTemplateGeel = new MailTemplateGeel(preferences.get("mailTemplateGeelTitel", ""), preferences.get("mailTemplateGeelContent", ""));
@@ -50,8 +48,6 @@ public class Instelling {
         preferences.putInt("geelTotEnMet", this.bereikGeel.getHoog());
         preferences.putInt("oranjeVanaf", this.bereikOranje.getLaag());
         preferences.putInt("oranjeTotEnMet", this.bereikOranje.getHoog());
-        preferences.putInt("roodVanaf", this.bereikRood.getLaag());
-        preferences.putInt("roodTotEnMet", this.bereikRood.getHoog());
 
         preferences.put("mailTemplateGroenTitel", this.mailTemplateGroen.titel);
         preferences.put("mailTemplateGroenContent", this.mailTemplateGroen.content);
@@ -107,10 +103,6 @@ public class Instelling {
         return bereikOranje;
     }
 
-    public Bereik getBereikRood() {
-        return bereikRood;
-    }
-
     public void setBereikGroen(Bereik bereikGroen) {
         this.bereikGroen = bereikGroen;
     }
@@ -121,10 +113,6 @@ public class Instelling {
 
     public void setBereikOranje(Bereik bereikOranje) {
         this.bereikOranje = bereikOranje;
-    }
-
-    public void setBereikRood(Bereik bereikRood) {
-        this.bereikRood = bereikRood;
     }
 
     public MailTemplate getMailTemplateGroen() {

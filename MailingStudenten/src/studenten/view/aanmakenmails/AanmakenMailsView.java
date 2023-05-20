@@ -10,14 +10,13 @@ import studenten.view.aanmakenmails.table.UploadTableView;
 
 public class AanmakenMailsView extends TabPane {
     private AanmakenMailsTableView table;
-    private UploadTableView uploadTable;
     private GrafiekView barPlot;
     private BorderPane actionsWrapper;
+    private Label bevestigingsTekst;
     private Button aanmakenMailsKnop;
+    private HBox aanmakenMailsKnopElement;
     private VBox vBox;
-    private VBox uploadVBox;
     private VBox grafiekVBox;
-    private Tab uploadBestandTab;
     private Tab aanmakenMailsTab;
     private Tab grafiekTab;
     private HBox kleurCodeFilter;
@@ -31,10 +30,14 @@ public class AanmakenMailsView extends TabPane {
 
     private void initialiseNodes() {
         this.table = new AanmakenMailsTableView();
-        this.uploadTable = new UploadTableView();
         this.barPlot = new GrafiekView();
 
+        this.bevestigingsTekst = new Label();
+        this.bevestigingsTekst.setStyle("-fx-text-fill: GREEN;");
         this.aanmakenMailsKnop = new Button("Aanmaken mails");
+        this.aanmakenMailsKnopElement = new HBox();
+        this.aanmakenMailsKnopElement.getChildren().addAll(this.bevestigingsTekst, this.aanmakenMailsKnop);
+
         this.actionsWrapper = new BorderPane();
 
         this.kleurCodeFilter = new HBox();
@@ -51,9 +54,6 @@ public class AanmakenMailsView extends TabPane {
         this.vBox = new VBox();
         this.vBox.getChildren().addAll(this.kleurCodeFilter, table, actionsWrapper);
 
-        this.uploadVBox = new VBox();
-        this.uploadVBox.getChildren().addAll(uploadTable);
-
         this.grafiekVBox = new VBox(barPlot.getBarplot());
 
         this.aanmakenMailsTab = new Tab("Aanmaken mails", this.vBox);
@@ -61,13 +61,15 @@ public class AanmakenMailsView extends TabPane {
         this.grafiekTab = new Tab("Grafiek", this.grafiekVBox);
         grafiekTab.setClosable(false);
 
-        this.getTabs().addAll(aanmakenMailsTab,grafiekTab);
+        this.getTabs().addAll(aanmakenMailsTab, grafiekTab);
     }
 
     private void layoutNodes() {
-        this.actionsWrapper.setRight(this.aanmakenMailsKnop);
+        this.actionsWrapper.setRight(this.aanmakenMailsKnopElement);
 
         this.kleurCodeFilter.setSpacing(10);
+
+        this.aanmakenMailsKnopElement.setSpacing(10);
 
         this.vBox.setSpacing(10);
         this.vBox.setPadding(new Insets(10, 10, 10, 10));
@@ -89,10 +91,6 @@ public class AanmakenMailsView extends TabPane {
         return vBox;
     }
 
-    Tab getUploadBestandTab() {
-        return uploadBestandTab;
-    }
-
     Tab getAanmakenMailsTab() {
         return aanmakenMailsTab;
     }
@@ -107,15 +105,8 @@ public class AanmakenMailsView extends TabPane {
         return kleurCodeFilterOpties;
     }
 
-    UploadTableView getUploadTable() {
-        return uploadTable;
-    }
     GrafiekView getBarPlot() {
         return barPlot;
-    }
-
-    VBox getUploadVBox() {
-        return uploadVBox;
     }
 
     VBox getGrafiekVBox() {
@@ -124,5 +115,13 @@ public class AanmakenMailsView extends TabPane {
 
     HBox getKleurCodeFilter() {
         return kleurCodeFilter;
+    }
+
+    Label getBevestigingsTekst() {
+        return bevestigingsTekst;
+    }
+
+    HBox getAanmakenMailsKnopElement() {
+        return aanmakenMailsKnopElement;
     }
 }

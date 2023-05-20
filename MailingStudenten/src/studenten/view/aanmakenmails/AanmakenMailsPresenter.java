@@ -1,16 +1,15 @@
 package studenten.view.aanmakenmails;
 
+import javafx.animation.PauseTransition;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.util.Duration;
 import studenten.model.*;
 import studenten.view.aanmakenmails.table.AanmakenMailsTablePresenter;
 import studenten.view.aanmakenmails.table.GrafiekPresenter;
-import studenten.view.aanmakenmails.table.UploadTablePresenter;
-
-import java.util.*;
 
 public class AanmakenMailsPresenter {
     private PeriodeResultaten model;
@@ -25,13 +24,7 @@ public class AanmakenMailsPresenter {
     }
 
     private void updateView() {
-        CsvBestand csv = new CsvBestand();
-        csv.leesBestand();
-
         new AanmakenMailsTablePresenter(this.model, this.view.getTable());
-
-        List<CsvLijn> csvLijnen = csv.getAlleResultaten();
-        new UploadTablePresenter(csvLijnen, this.view.getUploadTable());
 
         Grafiek grafiek = new Grafiek();
         grafiek.setgrafiekGegevens(this.model.getPeriodeResultaten());
@@ -66,8 +59,20 @@ public class AanmakenMailsPresenter {
                 try {
                     ObservableList<PeriodeResultaat> periodeResultaten = view.getTable().getItems();
                     model.mailsAanmaken(periodeResultaten);
+
+                    PauseTransition pause = new PauseTransition(Duration.seconds(2));
+                    pause.setOnFinished(new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent actionEvent) {
+                            view.getBevestigingsTekst().setText(null);
+                        }
+                    });
+                    pause.play();
+
+                    view.getBevestigingsTekst().setText("Aangemaakt!");
                 } catch (Throwable e) {
-                    System.out.println("test");
+                    view.getBevestigingsTekst().setStyle("-fx-text-fill: RED;");
+                    view.getBevestigingsTekst().setText("Er ging iets fout.");
                 }
             }
         });

@@ -41,7 +41,7 @@ public class PeriodeResultaat {
             return KleurCode.GEEL;
         } else if (instelling.getBereikOranje().isInBereik(nietGeslaagdeResultaten.size())) {
             return KleurCode.ORANJE;
-        } else if (instelling.getBereikRood().isInBereik(nietGeslaagdeResultaten.size())) {
+        } else if (nietGeslaagdeResultaten.size() == this.resultaten.size()) {
             return KleurCode.ROOD;
         }
         return KleurCode.GRIJS;

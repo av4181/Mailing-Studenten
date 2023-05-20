@@ -1,10 +1,10 @@
 package studenten.view.instellingen.templates.templateeditor;
 
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.web.HTMLEditor;
 
@@ -13,8 +13,9 @@ public class TemplateEditorView extends VBox {
     private TextField templateTitel;
     private Label templateContentLabel;
     private HTMLEditor templateContent;
-    private VBox templateOpslaanKnopWrapper;
+    private HBox opslaanKnopElement;
     private Button templateOpslaanKnop;
+    private Label bevestigingsTekst;
 
     public TemplateEditorView() {
         initialiseNodes();
@@ -27,11 +28,13 @@ public class TemplateEditorView extends VBox {
         this.templateContentLabel = new Label("Content");
         this.templateContent = new HTMLEditor();
 
-        this.templateOpslaanKnopWrapper = new VBox();
         this.templateOpslaanKnop = new Button("Opslaan");
-        this.templateOpslaanKnopWrapper.getChildren().addAll(this.templateOpslaanKnop);
-        this.templateOpslaanKnopWrapper.setAlignment(Pos.CENTER_RIGHT);
-        this.getChildren().addAll(this.templateTitelLabel, this.templateTitel, this.templateContentLabel, this.templateContent, this.templateOpslaanKnopWrapper);
+
+        this.bevestigingsTekst = new Label();
+        this.opslaanKnopElement = new HBox();
+        this.opslaanKnopElement.getChildren().addAll(this.templateOpslaanKnop, this.bevestigingsTekst);
+
+        this.getChildren().addAll(this.templateTitelLabel, this.templateTitel, this.templateContentLabel, this.templateContent, this.opslaanKnopElement);
     }
 
     private void layoutNodes() {
@@ -42,6 +45,8 @@ public class TemplateEditorView extends VBox {
 
         this.templateContent.setMaxWidth(800);
         this.templateContent.setMaxHeight(500);
+
+        this.opslaanKnopElement.setSpacing(10);
     }
 
     Label getTemplateTitelLabel() {
@@ -60,11 +65,15 @@ public class TemplateEditorView extends VBox {
         return templateContent;
     }
 
-    VBox getTemplateOpslaanKnopWrapper() {
-        return templateOpslaanKnopWrapper;
-    }
-
     Button getTemplateOpslaanKnop() {
         return templateOpslaanKnop;
+    }
+
+    HBox getOpslaanKnopElement() {
+        return opslaanKnopElement;
+    }
+
+    Label getBevestigingsTekst() {
+        return bevestigingsTekst;
     }
 }

@@ -16,7 +16,11 @@ public class InstellingenKleurcodesView extends GridPane {
     private HBox bereikOranjeInputs;
     private BereikElement bereikRoodElement;
     private HBox bereikRoodInputs;
+    private Label validationText;
+    private HBox opslaanKnopElement;
     private Button instellingenOpslaanKnop;
+    private Label bevestigingsTekst;
+    private Label validatieTekst;
 
     public InstellingenKleurcodesView() {
         initialiseNodes();
@@ -38,9 +42,17 @@ public class InstellingenKleurcodesView extends GridPane {
 
         this.bereikRoodElement = new BereikElement("Bereik rood");
         this.bereikRoodInputs = new HBox();
-        bereikRoodInputs.getChildren().addAll(new Label(">="), bereikRoodElement.getInputLaag());
+        bereikRoodInputs.getChildren().addAll(new Label("ALLE"));
+
+        this.validatieTekst = new Label();
+        this.validatieTekst.setStyle("-fx-text-fill: RED;");
 
         this.instellingenOpslaanKnop = new Button("Opslaan");
+        this.bevestigingsTekst = new Label();
+        this.bevestigingsTekst.setStyle("-fx-text-fill: GREEN;");
+
+        this.opslaanKnopElement = new HBox();
+        this.opslaanKnopElement.getChildren().addAll(this.instellingenOpslaanKnop, this.bevestigingsTekst);
     }
 
     private void layoutNodes() {
@@ -56,7 +68,10 @@ public class InstellingenKleurcodesView extends GridPane {
         this.add(bereikRoodElement.getLabel(), 0, 3);
         this.add(bereikRoodInputs, 1, 3);
 
-        this.add(instellingenOpslaanKnop, 0, 4);
+        this.add(validatieTekst, 0, 4, 2, 1);
+
+        this.opslaanKnopElement.setSpacing(10);
+        this.add(opslaanKnopElement, 0, 5,2, 1);
 
         this.setHgap(10);
         this.setVgap(10);
@@ -80,5 +95,37 @@ public class InstellingenKleurcodesView extends GridPane {
 
     Button getInstellingenOpslaanKnop() {
         return instellingenOpslaanKnop;
+    }
+
+    HBox getBereikGroenInputs() {
+        return bereikGroenInputs;
+    }
+
+    HBox getBereikGeelInputs() {
+        return bereikGeelInputs;
+    }
+
+    HBox getBereikOranjeInputs() {
+        return bereikOranjeInputs;
+    }
+
+    HBox getBereikRoodInputs() {
+        return bereikRoodInputs;
+    }
+
+    Label getValidationText() {
+        return validationText;
+    }
+
+    HBox getOpslaanKnopElement() {
+        return opslaanKnopElement;
+    }
+
+    Label getBevestigingsTekst() {
+        return bevestigingsTekst;
+    }
+
+    Label getValidatieTekst() {
+        return validatieTekst;
     }
 }

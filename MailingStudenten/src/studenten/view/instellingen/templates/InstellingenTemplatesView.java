@@ -4,7 +4,6 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import studenten.model.PeriodeResultaat;
 
 public class InstellingenTemplatesView extends GridPane {
     private Label templateGroenLabel;
@@ -24,19 +23,15 @@ public class InstellingenTemplatesView extends GridPane {
     private void initialiseNodes() {
         this.templateGroenLabel = new Label("Template groen");
         this.bewerkTemplateGroenKnop = new Button("Bewerk");
-        this.bewerkTemplateGroenKnop.setId(PeriodeResultaat.KleurCode.GROEN.toString());
 
         this.templateGeelLabel = new Label("Template geel");
         this.bewerkTemplateGeelKnop = new Button("Bewerk");
-        this.bewerkTemplateGeelKnop.setId(PeriodeResultaat.KleurCode.GEEL.toString());
 
         this.templateOranjeLabel = new Label("Template oranje");
         this.bewerkTemplateOranjeKnop = new Button("Bewerk");
-        this.bewerkTemplateOranjeKnop.setId(PeriodeResultaat.KleurCode.ORANJE.toString());
 
         this.templateRoodLabel = new Label("Template rood");
         this.bewerkTemplateRoodKnop = new Button("Bewerk");
-        this.bewerkTemplateRoodKnop.setId(PeriodeResultaat.KleurCode.ROOD.toString());
     }
 
     private void layoutNodes() {

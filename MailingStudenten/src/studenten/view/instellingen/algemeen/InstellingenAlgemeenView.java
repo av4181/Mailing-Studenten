@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 
 public class InstellingenAlgemeenView extends GridPane {
     private Label docentVoornaamLabel;
@@ -16,7 +17,10 @@ public class InstellingenAlgemeenView extends GridPane {
     private Label mailsAanmakenBestemmingLabel;
     private TextField mailsAanmakenBestemmingInput;
     private Button kiesMailsAanmakenBestemmingKnop;
+    private HBox opslaanKnopElement;
     private Button instellingenOpslaanKnop;
+    private Label bevestigingsTekst;
+    private Label validatieTekst;
 
     public InstellingenAlgemeenView() {
         initialiseNodes();
@@ -38,21 +42,31 @@ public class InstellingenAlgemeenView extends GridPane {
         this.mailsAanmakenBestemmingInput.setDisable(true);
         this.kiesMailsAanmakenBestemmingKnop = new Button("Kies bestemming");
 
+        this.validatieTekst = new Label();
+        this.validatieTekst.setStyle("-fx-text-fill: RED;");
+
         this.instellingenOpslaanKnop = new Button("Opslaan");
+        this.bevestigingsTekst = new Label();
+        this.bevestigingsTekst.setStyle("-fx-text-fill: GREEN;");
+        this.opslaanKnopElement = new HBox();
+        this.opslaanKnopElement.getChildren().addAll(this.instellingenOpslaanKnop, this.bevestigingsTekst);
     }
 
     private void layoutNodes() {
         this.add(docentVoornaamLabel, 0, 0);
-        this.add(docentVoornaamInput, 1, 0);
+        this.add(docentVoornaamInput, 1, 0, 2, 1);
         this.add(docentAchternaamLabel, 0, 1);
-        this.add(docentAchternaamInput, 1, 1);
+        this.add(docentAchternaamInput, 1, 1, 2, 1);
         this.add(linkAfspraakLabel, 0, 2);
-        this.add(linkAfspraakInput, 1, 2);
+        this.add(linkAfspraakInput, 1, 2, 2, 1);
         this.add(mailsAanmakenBestemmingLabel, 0, 3);
-        this.add(mailsAanmakenBestemmingInput, 1, 3);
-        this.add(kiesMailsAanmakenBestemmingKnop, 2, 3);
+        this.add(mailsAanmakenBestemmingInput, 1, 3, 2, 1);
+        this.add(kiesMailsAanmakenBestemmingKnop, 3, 3);
 
-        this.add(instellingenOpslaanKnop, 0, 4);
+        this.add(validatieTekst, 0, 4, 2, 1);
+
+        this.opslaanKnopElement.setSpacing(10);
+        this.add(opslaanKnopElement, 0, 5,2, 1);
 
         this.setHgap(10);
         this.setVgap(10);
@@ -97,5 +111,17 @@ public class InstellingenAlgemeenView extends GridPane {
 
     Button getKiesMailsAanmakenBestemmingKnop() {
         return this.kiesMailsAanmakenBestemmingKnop;
+    }
+
+    HBox getOpslaanKnopElement() {
+        return opslaanKnopElement;
+    }
+
+    Label getBevestigingsTekst() {
+        return bevestigingsTekst;
+    }
+
+    Label getValidatieTekst() {
+        return validatieTekst;
     }
 }

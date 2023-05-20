@@ -1,9 +1,13 @@
 package studenten.view.instellingen.kleurcodes;
 
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.util.Duration;
 import studenten.model.Bereik;
 import studenten.model.Instelling;
+
+import java.util.ArrayList;
 
 public class InstellingenKleurcodesPresenter {
     private Instelling model;
@@ -24,19 +28,84 @@ public class InstellingenKleurcodesPresenter {
         view.getBereikGeelElement().getInputHoog().setText(Integer.toString(this.model.getBereikGeel().getHoog()));
         view.getBereikOranjeElement().getInputLaag().setText(Integer.toString(this.model.getBereikOranje().getLaag()));
         view.getBereikOranjeElement().getInputHoog().setText(Integer.toString(this.model.getBereikOranje().getHoog()));
-        view.getBereikRoodElement().getInputLaag().setText(Integer.toString(this.model.getBereikRood().getLaag()));
     }
 
     private void addEventHandlers() {
         view.getInstellingenOpslaanKnop().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                model.setBereikGroen(new Bereik(Integer.parseInt(view.getBereikGroenElement().getInputLaag().getText()), Integer.parseInt(view.getBereikGroenElement().getInputHoog().getText())));
-                model.setBereikGeel(new Bereik(Integer.parseInt(view.getBereikGeelElement().getInputLaag().getText()), Integer.parseInt(view.getBereikGeelElement().getInputHoog().getText())));
-                model.setBereikOranje(new Bereik(Integer.parseInt(view.getBereikOranjeElement().getInputLaag().getText()), Integer.parseInt(view.getBereikOranjeElement().getInputHoog().getText())));
-                model.setBereikRood(new Bereik(Integer.parseInt(view.getBereikRoodElement().getInputLaag().getText()), 9999999));
+                ArrayList<String> validationErrors = new ArrayList<>();
+                if (view.getBereikGroenElement().getInputLaag().getText().isBlank() || view.getBereikGroenElement().getInputHoog().getText().isBlank()) {
+                    validationErrors.add("Bereik groen is verplicht.");
+                }
+                if (view.getBereikGeelElement().getInputLaag().getText().isBlank() || view.getBereikGeelElement().getInputHoog().getText().isBlank()) {
+                    validationErrors.add("Bereik geel is verplicht.");
+                }
+                if (view.getBereikOranjeElement().getInputLaag().getText().isBlank() || view.getBereikOranjeElement().getInputHoog().getText().isBlank()) {
+                    validationErrors.add("Bereik oranje is verplicht.");
+                }
 
-                model.opslaan();
+                if (validationErrors.size() > 0) {
+                    String validationErrorMessage = "";
+                    for (String error : validationErrors) {
+                        validationErrorMessage += error + "\n";
+                    }
+                    view.getValidatieTekst().setText(validationErrorMessage);
+                    return;
+                }
+
+                try {
+                    int bereikGroenLaag = Integer.parseInt(view.getBereikGroenElement().getInputLaag().getText());
+                    int bereikGroenHoog = Integer.parseInt(view.getBereikGroenElement().getInputHoog().getText());
+                    int bereikGeelLaag = Integer.parseInt(view.getBereikGeelElement().getInputLaag().getText());
+                    int bereikGeelHoog = Integer.parseInt(view.getBereikGeelElement().getInputHoog().getText());
+                    int bereikOranjeLaag = Integer.parseInt(view.getBereikOranjeElement().getInputLaag().getText());
+                    int bereikOranjeHoog = Integer.parseInt(view.getBereikOranjeElement().getInputHoog().getText());
+
+                    if (bereikGroenLaag > bereikGroenHoog) {
+                        validationErrors.add("Bereik groen eindwaarde kan niet lager zijn dan startwaarde.");
+                    }
+                    if (bereikGeelLaag > bereikGeelHoog) {
+                        validationErrors.add("Bereik geel eindwaarde kan niet lager zijn dan startwaarde.");
+                    }
+                    if (bereikOranjeLaag > bereikOranjeHoog) {
+                        validationErrors.add("Bereik oranje eindwaarde kan niet lager zijn dan startwaarde.");
+                    }
+
+                    if ((bereikGeelLaag - bereikGroenHoog) != 1 || (bereikOranjeLaag - bereikGeelHoog) != 1) {
+                        validationErrors.add("Er kunnen geen gaten zijn tussen de verschillende kleurcodes.");
+                    }
+
+                    if (validationErrors.size() > 0) {
+                        String validationErrorMessage = "";
+                        for (String error : validationErrors) {
+                            validationErrorMessage += error + "\n";
+                        }
+                        view.getValidatieTekst().setText(validationErrorMessage);
+                        return;
+                    }
+
+                    model.setBereikGroen(new Bereik(bereikGroenLaag, bereikGroenHoog));
+                    model.setBereikGeel(new Bereik(bereikGeelLaag, bereikGeelHoog));
+                    model.setBereikOranje(new Bereik(bereikOranjeLaag, bereikOranjeHoog));
+
+                    model.opslaan();
+
+                    view.getValidatieTekst().setText(null);
+
+                    PauseTransition pause = new PauseTransition(Duration.seconds(2));
+                    pause.setOnFinished(new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent actionEvent) {
+                            view.getBevestigingsTekst().setText(null);
+                        }
+                    });
+                    pause.play();
+
+                    view.getBevestigingsTekst().setText("Opgeslagen!");
+                } catch (NumberFormatException e) {
+                    view.getValidatieTekst().setText("Velden mogen enkel numerieke waarden bevatten.");
+                }
             }
         });
     }
