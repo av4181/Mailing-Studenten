@@ -1,5 +1,6 @@
 package studenten.view.UploadFile;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.FileChooser;
@@ -10,6 +11,7 @@ import studenten.view.main.MainPresenter;
 import studenten.view.main.MainView;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,7 +52,7 @@ public class UploadFilePresenter {
             public void handle(ActionEvent arg0) {
                 file.leesBestand();
                 List<CsvLijn> csvLijnen = file.getAlleResultaten();
-                view.getTabel().getItems().addAll(csvLijnen);
+                view.getTabel().setItems(FXCollections.observableArrayList(csvLijnen));
             }
         });
         this.view.getAcceptButton().setOnAction(new EventHandler<ActionEvent>() {

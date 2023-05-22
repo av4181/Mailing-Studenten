@@ -5,18 +5,17 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class CsvBestand {
-    private String pad = "/files/mailingstudenten.csv";
+    private String pad;
     private String delimiter = ";";
     private Map<Student,ArrayList<Resultaat>> studentLijst ;
-    private final InputStream inputStream;
+    private InputStream inputStream;
 
     public CsvBestand() {
         studentLijst = new HashMap<Student,ArrayList<Resultaat>>();
-        inputStream = getClass().getResourceAsStream(pad);
     }
 
     public void leesBestand() {
-        try (final BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+        try (final BufferedReader reader = new BufferedReader(new FileReader(new File(this.pad)))) {
             String line = reader.readLine();
             Student student;
             int teller = 0;
@@ -47,10 +46,8 @@ public class CsvBestand {
                 }
                 teller++;
             }
-            return;
-        }
-        catch (IOException ex) {
-            ex.printStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
