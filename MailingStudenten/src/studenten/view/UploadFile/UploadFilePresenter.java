@@ -1,4 +1,4 @@
-package studenten.view.main;
+package studenten.view.UploadFile;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -6,6 +6,8 @@ import javafx.stage.FileChooser;
 import studenten.model.CsvBestand;
 import studenten.model.CsvLijn;
 import studenten.view.aanmakenmails.table.UploadTablePresenter;
+import studenten.view.main.MainPresenter;
+import studenten.view.main.MainView;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -35,10 +37,10 @@ public class UploadFilePresenter {
                 fileChooser.setTitle("Open Bestand");
                 fileChooser.setInitialDirectory(new File("."));
                 fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Text Files", "*.txt", "*.csv"));
-                selectedFile = fileChooser.showOpenDialog(null);
+                setSelectedFile(fileChooser.showOpenDialog(null));
                 view.getBestandNaamLabel().setText(selectedFile.getName());
                 file = new CsvBestand();
-                file.setPad(selectedFile.getName());
+                file.setPad(selectedFile.getPath());
             }
         });
 
@@ -62,4 +64,11 @@ public class UploadFilePresenter {
         });
     }
 
+    public void setSelectedFile(File selectedFile) {
+        this.selectedFile = selectedFile;
+    }
+
+    public void setFile(CsvBestand file) {
+        this.file = file;
+    }
 }

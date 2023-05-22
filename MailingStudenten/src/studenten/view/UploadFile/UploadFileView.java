@@ -1,4 +1,4 @@
-package studenten.view.main;
+package studenten.view.UploadFile;
 
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;

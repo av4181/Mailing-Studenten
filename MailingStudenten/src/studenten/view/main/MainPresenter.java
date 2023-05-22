@@ -6,6 +6,8 @@ import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import studenten.model.*;
+import studenten.view.About.AboutPresenter;
+import studenten.view.About.AboutView;
 import studenten.view.aanmakenmails.AanmakenMailsPresenter;
 import studenten.view.instellingen.InstellingenPresenter;
 import studenten.view.instellingen.InstellingenView;
@@ -57,6 +59,22 @@ public class MainPresenter {
                 instellingenStage.setHeight(500);
                 instellingenStage.setTitle("Instellingen");
                 instellingenStage.showAndWait();
+            }
+        });
+
+        view.getMiAbout().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                AboutView aboutView = new AboutView();
+                SimpleModel SimpleModel = new SimpleModel();
+                AboutPresenter aboutPresenter = new AboutPresenter(SimpleModel,aboutView);
+                Stage aboutStage = new Stage();
+                aboutStage.initOwner(view.getScene().getWindow());
+                aboutStage.initModality(Modality.APPLICATION_MODAL);
+                aboutStage.setScene(new Scene(aboutView));
+                aboutStage.setX(view.getScene().getWindow().getX() + 100);
+                aboutStage.setY(view.getScene().getWindow().getY() + 100);
+                aboutStage.showAndWait();
             }
         });
     }

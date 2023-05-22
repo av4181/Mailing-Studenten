@@ -8,7 +8,9 @@ import studenten.view.aanmakenmails.AanmakenMailsView;
 
 public class MainView extends BorderPane {
     private Menu menu;
+    private Menu help;
     private MenuItem instellingenMenuItem;
+    private MenuItem miAbout;
     private MenuBar menuBar;
     private AanmakenMailsView aanmakenMailsView;
 
@@ -19,12 +21,16 @@ public class MainView extends BorderPane {
 
     private void initialiseNodes() {
         this.menu = new Menu("Bewerken");
+        this.help = new Menu("Help");
+
         this.instellingenMenuItem = new MenuItem("Instellingen");
+        this.miAbout = new MenuItem("About");
 
         this.menu.getItems().addAll(instellingenMenuItem);
+        this.help.getItems().addAll(miAbout);
 
         this.menuBar = new MenuBar();
-        this.menuBar.getMenus().add(menu);
+        this.menuBar.getMenus().addAll(menu,help);
 
         this.aanmakenMailsView = new AanmakenMailsView();
     }
@@ -48,5 +54,9 @@ public class MainView extends BorderPane {
 
     AanmakenMailsView getAanmakenMailsView() {
         return aanmakenMailsView;
+    }
+
+    public MenuItem getMiAbout() {
+        return miAbout;
     }
 }
