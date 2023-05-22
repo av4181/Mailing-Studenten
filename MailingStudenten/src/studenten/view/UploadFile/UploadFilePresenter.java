@@ -11,7 +11,6 @@ import studenten.view.main.MainPresenter;
 import studenten.view.main.MainView;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,7 +58,7 @@ public class UploadFilePresenter {
             @Override
             public void handle(ActionEvent actionEvent) {
                 MainView mainView = new MainView();
-                new MainPresenter(mainView);
+                new MainPresenter(file, mainView);
 
                 view.getScene().setRoot(mainView);
             }

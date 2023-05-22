@@ -7,8 +7,10 @@ import javafx.scene.layout.BorderPane;
 import studenten.view.aanmakenmails.AanmakenMailsView;
 
 public class MainView extends BorderPane {
-    private Menu menu;
-    private Menu help;
+    private Menu bestandMenu;
+    private Menu editMenu;
+    private Menu helpMenu;
+    private MenuItem bestandMenuItem;
     private MenuItem instellingenMenuItem;
     private MenuItem miAbout;
     private MenuBar menuBar;
@@ -20,17 +22,20 @@ public class MainView extends BorderPane {
     }
 
     private void initialiseNodes() {
-        this.menu = new Menu("Bewerken");
-        this.help = new Menu("Help");
+        this.bestandMenu = new Menu("Bestand");
+        this.editMenu = new Menu("Bewerken");
+        this.helpMenu = new Menu("Help");
 
+        this.bestandMenuItem = new MenuItem("Nieuw bestand opladen");
         this.instellingenMenuItem = new MenuItem("Instellingen");
         this.miAbout = new MenuItem("About");
 
-        this.menu.getItems().addAll(instellingenMenuItem);
-        this.help.getItems().addAll(miAbout);
+        this.bestandMenu.getItems().addAll(bestandMenuItem);
+        this.editMenu.getItems().addAll(instellingenMenuItem);
+        this.helpMenu.getItems().addAll(miAbout);
 
         this.menuBar = new MenuBar();
-        this.menuBar.getMenus().addAll(menu,help);
+        this.menuBar.getMenus().addAll(bestandMenu, editMenu, helpMenu);
 
         this.aanmakenMailsView = new AanmakenMailsView();
     }
@@ -40,8 +45,8 @@ public class MainView extends BorderPane {
         this.setCenter(aanmakenMailsView);
     }
 
-    Menu getMenu() {
-        return menu;
+    Menu getEditMenu() {
+        return editMenu;
     }
 
     MenuItem getInstellingenMenuItem() {
@@ -56,7 +61,19 @@ public class MainView extends BorderPane {
         return aanmakenMailsView;
     }
 
-    public MenuItem getMiAbout() {
+    MenuItem getMiAbout() {
         return miAbout;
+    }
+
+    Menu getHelpMenu() {
+        return helpMenu;
+    }
+
+    MenuItem getBestandMenuItem() {
+        return bestandMenuItem;
+    }
+
+    Menu getBestandMenu() {
+        return bestandMenu;
     }
 }

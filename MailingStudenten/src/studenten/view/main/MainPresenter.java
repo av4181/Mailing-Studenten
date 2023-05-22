@@ -8,6 +8,8 @@ import javafx.stage.Stage;
 import studenten.model.*;
 import studenten.view.About.AboutPresenter;
 import studenten.view.About.AboutView;
+import studenten.view.UploadFile.UploadFilePresenter;
+import studenten.view.UploadFile.UploadFileView;
 import studenten.view.aanmakenmails.AanmakenMailsPresenter;
 import studenten.view.instellingen.InstellingenPresenter;
 import studenten.view.instellingen.InstellingenView;
@@ -16,9 +18,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainPresenter {
+    private CsvBestand model;
     private MainView view;
 
-    public MainPresenter(MainView view) {
+    public MainPresenter(CsvBestand model, MainView view) {
+        this.model = model;
         this.view = view;
 
         updateView();
@@ -26,10 +30,9 @@ public class MainPresenter {
     }
 
     private void updateView() {
-        CsvBestand csv = new CsvBestand();
-        csv.leesBestand();
+        model.leesBestand();
 
-        List<Student> studenten = csv.getStudenten();
+        List<Student> studenten = model.getStudenten();
 
         List<PeriodeResultaat> periodeResultaten = new ArrayList<>();
         for (Student student: studenten) {
@@ -40,6 +43,15 @@ public class MainPresenter {
     }
 
     private void addEventHandlers() {
+        view.getBestandMenuItem().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                UploadFileView uploadFileView = new UploadFileView();
+                new UploadFilePresenter(uploadFileView);
+
+                view.getScene().setRoot(uploadFileView);
+            }
+        });
         this.view.getInstellingenMenuItem().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
