@@ -35,9 +35,9 @@ public class Main extends Application {
         Label label = new Label(" Splash Screen ");
         StackPane stackPane = new StackPane();
         borderPane.setBottom(stackPane);
-        borderPane.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID,new CornerRadii(0),new BorderWidths(6.0))));
+        borderPane.setBorder(new Border(new BorderStroke(Color.WHITE,BorderStrokeStyle.SOLID,new CornerRadii(0),new BorderWidths(6.0))));
 
-        Scene splashScene = new Scene(borderPane, 545, 295);
+        Scene splashScene = new Scene(borderPane, 545, 395);
         Stage splashStage = new Stage();
         splashStage.setTitle("SplashScreenDemoFX");
         splashStage.setScene(splashScene);
