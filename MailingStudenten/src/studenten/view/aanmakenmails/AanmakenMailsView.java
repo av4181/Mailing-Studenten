@@ -6,7 +6,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import studenten.view.aanmakenmails.table.*;
-import studenten.view.aanmakenmails.table.UploadTableView;
 
 public class AanmakenMailsView extends TabPane {
     private AanmakenMailsTableView table;
@@ -22,6 +21,7 @@ public class AanmakenMailsView extends TabPane {
     private HBox kleurCodeFilter;
     private Label kleurCodeFilterOptiesLabel;
     private ChoiceBox<String> kleurCodeFilterOpties;
+    private Button refreshKnop;
 
     public AanmakenMailsView() {
         initialiseNodes();
@@ -49,7 +49,10 @@ public class AanmakenMailsView extends TabPane {
         this.kleurCodeFilterOpties.getItems().add("Oranje");
         this.kleurCodeFilterOpties.getItems().add("Rood");
         this.kleurCodeFilterOpties.setValue("Alle");
-        this.kleurCodeFilter.getChildren().addAll(kleurCodeFilterOptiesLabel, kleurCodeFilterOpties);
+
+        this.refreshKnop = new Button("Refresh");
+
+        this.kleurCodeFilter.getChildren().addAll(kleurCodeFilterOptiesLabel, kleurCodeFilterOpties, refreshKnop);
 
         this.vBox = new VBox();
         this.vBox.getChildren().addAll(this.kleurCodeFilter, table, actionsWrapper);
@@ -123,5 +126,9 @@ public class AanmakenMailsView extends TabPane {
 
     HBox getAanmakenMailsKnopElement() {
         return aanmakenMailsKnopElement;
+    }
+
+    Button getRefreshKnop() {
+        return refreshKnop;
     }
 }

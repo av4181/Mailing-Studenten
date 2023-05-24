@@ -76,5 +76,12 @@ public class AanmakenMailsPresenter {
                 }
             }
         });
+
+        this.view.getRefreshKnop().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                view.getTable().refresh();
+            }
+        });
     }
 }

@@ -27,7 +27,6 @@ public class TemplateEditorView extends VBox {
         this.templateTitel = new TextField();
         this.templateContentLabel = new Label("Content");
         this.templateContent = new HTMLEditor();
-
         this.templateOpslaanKnop = new Button("Opslaan");
 
         this.bevestigingsTekst = new Label();

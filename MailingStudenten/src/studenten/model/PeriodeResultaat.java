@@ -35,16 +35,17 @@ public class PeriodeResultaat {
 
         instelling.getBereikGroen().isInBereik(nietGeslaagdeResultaten.size());
 
-        if (instelling.getBereikGroen().isInBereik(nietGeslaagdeResultaten.size())) {
-            return KleurCode.GROEN;
-        } else if (instelling.getBereikGeel().isInBereik(nietGeslaagdeResultaten.size())) {
-            return KleurCode.GEEL;
+        if (nietGeslaagdeResultaten.size() == this.resultaten.size()) {
+            return KleurCode.ROOD;
         } else if (instelling.getBereikOranje().isInBereik(nietGeslaagdeResultaten.size())) {
             return KleurCode.ORANJE;
-        } else if (nietGeslaagdeResultaten.size() == this.resultaten.size()) {
-            return KleurCode.ROOD;
+        } else if (instelling.getBereikGeel().isInBereik(nietGeslaagdeResultaten.size())) {
+            return KleurCode.GEEL;
+        } if (instelling.getBereikGroen().isInBereik(nietGeslaagdeResultaten.size())) {
+            return KleurCode.GROEN;
+        } else {
+            return KleurCode.GRIJS;
         }
-        return KleurCode.GRIJS;
     }
 
     public double berekenGemiddelde() {

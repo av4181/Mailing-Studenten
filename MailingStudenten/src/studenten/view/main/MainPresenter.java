@@ -6,10 +6,10 @@ import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import studenten.model.*;
-import studenten.view.About.AboutPresenter;
-import studenten.view.About.AboutView;
-import studenten.view.UploadFile.UploadFilePresenter;
-import studenten.view.UploadFile.UploadFileView;
+import studenten.view.about.AboutPresenter;
+import studenten.view.about.AboutView;
+import studenten.view.uploadFile.UploadFilePresenter;
+import studenten.view.uploadFile.UploadFileView;
 import studenten.view.aanmakenmails.AanmakenMailsPresenter;
 import studenten.view.instellingen.InstellingenPresenter;
 import studenten.view.instellingen.InstellingenView;
@@ -86,6 +86,7 @@ public class MainPresenter {
                 aboutStage.setScene(new Scene(aboutView));
                 aboutStage.setX(view.getScene().getWindow().getX() + 100);
                 aboutStage.setY(view.getScene().getWindow().getY() + 100);
+                aboutStage.setTitle("Help");
                 aboutStage.showAndWait();
             }
         });

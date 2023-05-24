@@ -15,8 +15,8 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.StageStyle;
-import studenten.view.UploadFile.UploadFilePresenter;
-import studenten.view.UploadFile.UploadFileView;
+import studenten.view.uploadFile.UploadFilePresenter;
+import studenten.view.uploadFile.UploadFileView;
 
 import javax.swing.Timer;
 import java.awt.event.ActionListener;
