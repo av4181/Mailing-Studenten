@@ -15,6 +15,7 @@ public class CsvBestand {
     }
 
     public void leesBestand() {
+        this.studentLijst = new HashMap<>();
         try (final BufferedReader reader = new BufferedReader(new FileReader(new File(this.pad)))) {
             String line = reader.readLine();
             Student student;

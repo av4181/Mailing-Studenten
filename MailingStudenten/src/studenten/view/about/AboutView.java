@@ -1,4 +1,4 @@
-package studenten.view.About;
+package studenten.view.about;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

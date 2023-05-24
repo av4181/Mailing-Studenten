@@ -36,7 +36,7 @@ public class MailTemplateVariables {
         this.variables.put("periode_resultaat.niet_geslaagde_vakken", nietGeslaagdResultaten);
         this.variables.put("instelling.docent_voornaam", this.instelling.getDocentVoornaam());
         this.variables.put("instelling.docent_achternaam", this.instelling.getDocentAchternaam());
-        this.variables.put("instelling.link_afspraak", this.instelling.getDocentAchternaam());
+        this.variables.put("instelling.link_afspraak", this.instelling.getLinkAfspraak());
     }
 
     public Map<String, String> getVariables() {

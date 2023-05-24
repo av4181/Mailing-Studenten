@@ -1,4 +1,4 @@
-package studenten.view.UploadFile;
+package studenten.view.uploadFile;
 
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -39,9 +39,10 @@ public class UploadFilePresenter {
                 fileChooser.setInitialDirectory(new File("."));
                 fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Text Files", "*.txt", "*.csv"));
                 setSelectedFile(fileChooser.showOpenDialog(null));
-                view.getBestandNaamLabel().setText(selectedFile.getName());
+                view.getBestandNaam().setText(selectedFile.getName());
                 file = new CsvBestand();
                 file.setPad(selectedFile.getPath());
+                view.getLeesCsvKnop().setDisable(false);
             }
         });
 
@@ -52,6 +53,7 @@ public class UploadFilePresenter {
                 file.leesBestand();
                 List<CsvLijn> csvLijnen = file.getAlleResultaten();
                 view.getTabel().setItems(FXCollections.observableArrayList(csvLijnen));
+                view.getAcceptButton().setDisable(false);
             }
         });
         this.view.getAcceptButton().setOnAction(new EventHandler<ActionEvent>() {

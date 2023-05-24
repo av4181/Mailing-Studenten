@@ -1,10 +1,12 @@
-package studenten.view.UploadFile;
+package studenten.view.uploadFile;
 
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import studenten.view.aanmakenmails.table.UploadTableView;
 
@@ -16,10 +18,11 @@ public class UploadFileView extends VBox {
     private File gekozenBestand;
     private Button selecteerBestandKnop;
     private Button leesCsvKnop;
-    private Label bestandNaamLabel;
+    private TextField bestandNaam;
     private ChoiceBox choiceBoxDelimiter;
     private UploadTableView tabel;
     private Button acceptButton;
+    private Text explanationText;
 
     private static final int VENSTER_BREEDTE = 500;
     private static final int VENSTER_HOOGTE = 300;
@@ -30,22 +33,30 @@ public class UploadFileView extends VBox {
     }
 
     private void initialiseNodes() {
+        this.explanationText = new Text("Selecteer uw .csv bestand met de resultaten en de delimiter dat wordt gebruikt in dit bestand. Eens dat gedaan is, kan u de file opladen.");
+
         this.fileChooser = new FileChooser();
         this.actionsWrapper = new BorderPane();
-        this.selecteerBestandKnop = new Button("selecteer .csv bestand");
-        this.leesCsvKnop = new Button("Lees .csv bestand");
-        this.bestandNaamLabel = new Label();
+        this.selecteerBestandKnop = new Button("Selecteer .csv bestand");
+        this.leesCsvKnop = new Button("Opladen");
+        this.leesCsvKnop.setDisable(true);
+        this.bestandNaam = new TextField();
         this.choiceBoxDelimiter = new ChoiceBox(FXCollections.observableArrayList(
                 "Delimiter: Tab", "Delimiter: Komma", "Delimiter: Spatie")
         );
+        this.choiceBoxDelimiter.setValue("Delimiter: Komma");
+        this.bestandNaam.setDisable(true);
+
+        HBox hbox = new HBox();
+        hbox.getChildren().addAll(this.selecteerBestandKnop, this.bestandNaam, this.choiceBoxDelimiter, this.leesCsvKnop);
+        hbox.setSpacing(10);
         this.tabel = new UploadTableView();
-        this.acceptButton = new Button("Accepteer");
+        this.acceptButton = new Button("Doorgaan");
+        this.acceptButton.setDisable(true);
 
         this.getChildren().addAll(
-                selecteerBestandKnop,
-                bestandNaamLabel,
-                choiceBoxDelimiter,
-                leesCsvKnop,
+                this.explanationText,
+                hbox,
                 tabel,
                 acceptButton
         );
@@ -54,7 +65,8 @@ public class UploadFileView extends VBox {
     private void layoutNodes() {
         //Maak knoppen even breed
         this.selecteerBestandKnop.setMaxWidth(VENSTER_BREEDTE / 2);
-        this.bestandNaamLabel.setMaxWidth(VENSTER_BREEDTE / 2);
+        this.bestandNaam.setMaxWidth(VENSTER_BREEDTE / 2);
+        this.bestandNaam.setPrefWidth(300);
         this.choiceBoxDelimiter.setMaxWidth(VENSTER_BREEDTE / 2);
         this.setPadding(new Insets(10, 10, 10, 10));
         this.setSpacing(10);
@@ -76,8 +88,8 @@ public class UploadFileView extends VBox {
         return leesCsvKnop;
     }
 
-    Label getBestandNaamLabel() {
-        return bestandNaamLabel;
+    TextField getBestandNaam() {
+        return bestandNaam;
     }
 
     ChoiceBox getChoiceBoxDelimiter() {
@@ -93,5 +105,9 @@ public class UploadFileView extends VBox {
 
     UploadTableView getTabel() {
         return tabel;
+    }
+
+    Text getExplanationText() {
+        return explanationText;
     }
 }

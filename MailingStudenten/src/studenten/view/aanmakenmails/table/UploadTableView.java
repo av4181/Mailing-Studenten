@@ -22,15 +22,14 @@ public class UploadTableView extends TableView {
         this.emailKolom = new TableColumn<>("Email");
         this.voornaamKolom = new TableColumn<>("Voornaam");
         this.naamKolom = new TableColumn<>("Naam");
-        this.rapportOnderdeelKolom = new TableColumn<>("RapportOnderdeel");
-        this.deelgroepCodeKolom = new TableColumn<>("DeelgroepCode");
-        this.puntKolom = new TableColumn<>("Punt");
-        this.examenkansOmschrijvingKolom = new TableColumn<>("ExamenkansOmschrijving");
+        this.rapportOnderdeelKolom = new TableColumn<>("Rapportonderdeel");
+        this.deelgroepCodeKolom = new TableColumn<>("Deelgroepcode");
+//        this.puntKolom = new TableColumn<>("Punt");
+        this.examenkansOmschrijvingKolom = new TableColumn<>("Examenkans omschrijving");
         this.kansaandeelKolom = new TableColumn<>("Kansaandeel");
         this.periodeKolom = new TableColumn<>("Periode");
 
-        this.getColumns().addAll(emailKolom, voornaamKolom, naamKolom, rapportOnderdeelKolom, deelgroepCodeKolom,
-                puntKolom, examenkansOmschrijvingKolom, kansaandeelKolom, periodeKolom);
+        this.getColumns().addAll(emailKolom, voornaamKolom, naamKolom, rapportOnderdeelKolom, deelgroepCodeKolom, examenkansOmschrijvingKolom, kansaandeelKolom, periodeKolom);
     }
 
     TableColumn<CsvLijn, String> getEmailKolom() {
