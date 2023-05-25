@@ -1,4 +1,4 @@
-package be.kdg.mailingstudenten.view.instellingen.templates.templateeditor;
+package be.kdg.mailingstudenten.view.main.instellingen.templates.templateeditor;
 
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;

@@ -1,7 +1,7 @@
-package be.kdg.mailingstudenten.view.instellingen.templates;
+package be.kdg.mailingstudenten.view.main.instellingen.templates;
 
 import be.kdg.mailingstudenten.model.Instelling;
-import be.kdg.mailingstudenten.view.instellingen.templates.templateeditor.*;
+import be.kdg.mailingstudenten.view.main.instellingen.templates.templateeditor.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;

@@ -1,25 +1,25 @@
-package be.kdg.mailingstudenten.view.instellingen.templates.templateeditor;
+package be.kdg.mailingstudenten.view.main.instellingen.templates.templateeditor;
 
 import be.kdg.mailingstudenten.model.Instelling;
-import be.kdg.mailingstudenten.model.MailTemplateOranje;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.util.Duration;
+import be.kdg.mailingstudenten.model.MailTemplateGeel;
 
-public class TemplateOranjeEditorPresenter extends TemplateEditorPresenter {
-    public TemplateOranjeEditorPresenter(Instelling model, TemplateEditorView view) {
+public class TemplateGeelEditorPresenter extends TemplateEditorPresenter {
+    public TemplateGeelEditorPresenter(Instelling model, TemplateEditorView view) {
         super(model, view);
     }
 
     @Override
     void setTemplateTitel() {
-        this.view.getTemplateTitel().setText(model.getMailTemplateOranje().getTitel());
+        this.view.getTemplateTitel().setText(model.getMailTemplateGeel().getTitel());
     }
 
     @Override
     void setTemplateContent() {
-        this.view.getTemplateContent().setHtmlText(model.getMailTemplateOranje().getContent());
+        this.view.getTemplateContent().setHtmlText(model.getMailTemplateGeel().getContent());
     }
 
     void handleSave() {
@@ -29,7 +29,7 @@ public class TemplateOranjeEditorPresenter extends TemplateEditorPresenter {
                 String successMessage = String.format("-fx-text-fill: GREEN;");
                 String errorMessage = String.format("-fx-text-fill: RED;");
 
-                model.setMailTemplateOranje(new MailTemplateOranje(view.getTemplateTitel().getText(), view.getTemplateContent().getHtmlText()));
+                model.setMailTemplateGeel(new MailTemplateGeel(view.getTemplateTitel().getText(), view.getTemplateContent().getHtmlText()));
                 model.opslaan();
 
                 PauseTransition pause = new PauseTransition(Duration.seconds(2));

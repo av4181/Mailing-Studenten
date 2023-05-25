@@ -1,4 +1,4 @@
-package be.kdg.mailingstudenten.view.instellingen.algemeen;
+package be.kdg.mailingstudenten.view.main.instellingen.algemeen;
 
 import be.kdg.mailingstudenten.model.Instelling;
 import javafx.animation.PauseTransition;

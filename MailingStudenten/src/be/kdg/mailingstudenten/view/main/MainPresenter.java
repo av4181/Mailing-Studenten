@@ -11,8 +11,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import be.kdg.mailingstudenten.view.uploadfile.UploadFilePresenter;
 import be.kdg.mailingstudenten.view.uploadfile.UploadFileView;
-import be.kdg.mailingstudenten.view.instellingen.InstellingenPresenter;
-import be.kdg.mailingstudenten.view.instellingen.InstellingenView;
+import be.kdg.mailingstudenten.view.main.instellingen.InstellingenPresenter;
+import be.kdg.mailingstudenten.view.main.instellingen.InstellingenView;
 
 import java.util.ArrayList;
 import java.util.List;

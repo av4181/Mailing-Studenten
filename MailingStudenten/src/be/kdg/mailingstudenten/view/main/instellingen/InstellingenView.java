@@ -1,9 +1,9 @@
-package be.kdg.mailingstudenten.view.instellingen;
+package be.kdg.mailingstudenten.view.main.instellingen;
 
 import javafx.scene.control.*;
-import be.kdg.mailingstudenten.view.instellingen.algemeen.InstellingenAlgemeenView;
-import be.kdg.mailingstudenten.view.instellingen.kleurcodes.InstellingenKleurcodesView;
-import be.kdg.mailingstudenten.view.instellingen.templates.InstellingenTemplatesView;
+import be.kdg.mailingstudenten.view.main.instellingen.algemeen.InstellingenAlgemeenView;
+import be.kdg.mailingstudenten.view.main.instellingen.kleurcodes.InstellingenKleurcodesView;
+import be.kdg.mailingstudenten.view.main.instellingen.templates.InstellingenTemplatesView;
 
 public class InstellingenView extends TabPane {
     private InstellingenAlgemeenView instellingenAlgemeenView;

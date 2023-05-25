@@ -1,4 +1,4 @@
-package be.kdg.mailingstudenten.view.instellingen.kleurcodes;
+package be.kdg.mailingstudenten.view.main.instellingen.kleurcodes;
 
 import be.kdg.mailingstudenten.model.Bereik;
 import be.kdg.mailingstudenten.model.Instelling;

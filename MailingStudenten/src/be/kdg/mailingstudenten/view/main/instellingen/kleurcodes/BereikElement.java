@@ -1,4 +1,4 @@
-package be.kdg.mailingstudenten.view.instellingen.kleurcodes;
+package be.kdg.mailingstudenten.view.main.instellingen.kleurcodes;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;

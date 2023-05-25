@@ -1,4 +1,4 @@
-package be.kdg.mailingstudenten.view.instellingen.algemeen;
+package be.kdg.mailingstudenten.view.main.instellingen.algemeen;
 
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;

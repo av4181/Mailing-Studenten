@@ -1,4 +1,4 @@
-package be.kdg.mailingstudenten.view.instellingen.templates.templateeditor;
+package be.kdg.mailingstudenten.view.main.instellingen.templates.templateeditor;
 
 import be.kdg.mailingstudenten.model.Instelling;
 
