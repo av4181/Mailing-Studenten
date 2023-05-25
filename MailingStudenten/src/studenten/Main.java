@@ -41,6 +41,9 @@ public class Main extends Application {
                         stage.setWidth(1200);
                         stage.setHeight(800);
                         stage.setResizable(true);
+
+                        splashStage.close();
+                        stage.show();
                     }
                 });
             }
