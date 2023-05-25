@@ -8,7 +8,6 @@ import javafx.util.Duration;
 import studenten.model.Instelling;
 
 import java.io.File;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class InstellingenAlgemeenPresenter {
