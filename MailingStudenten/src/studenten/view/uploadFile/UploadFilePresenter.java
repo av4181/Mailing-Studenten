@@ -1,5 +1,7 @@
 package studenten.view.uploadFile;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -56,6 +58,22 @@ public class UploadFilePresenter {
                 view.getAcceptButton().setDisable(false);
             }
         });
+        this.view.getChoiceBoxDelimiter().getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                if (observableValue.getValue() == "Tab") {
+                    file.setDelimiter("\t");
+                }
+                if (observableValue.getValue() == "Puntkomma") {
+                    file.setDelimiter(";");
+                }
+                if (observableValue.getValue() == "Spatie") {
+                    file.setDelimiter(" ");
+                }
+            }
+        });
+
+
         this.view.getAcceptButton().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {

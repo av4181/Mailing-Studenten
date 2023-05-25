@@ -37,6 +37,9 @@ public class Resultaat implements Map<Student, ArrayList<Resultaat>> {
             return Double.parseDouble(this.punt);
         }
     }
+    public String getPuntString(){
+        return punt;
+    }
 
     public String getExamenkansomschrijving() {
         return examenkansomschrijving;

@@ -70,6 +70,12 @@ public class UploadTablePresenter {
                 return new SimpleStringProperty(csvLijnStringCellDataFeatures.getValue().getResultaat().getPeriode());
             }
         });
+        this.view.getPuntKolom().setCellValueFactory(new Callback<TableColumn.CellDataFeatures<CsvLijn, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<CsvLijn, String> csvLijnStringCellDataFeatures) {
+                return new SimpleStringProperty(csvLijnStringCellDataFeatures.getValue().getResultaat().getPuntString());
+            }
+        });
 
         this.view.getItems().addAll(this.model);
     }

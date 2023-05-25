@@ -11,7 +11,7 @@ public class UploadTableView extends TableView {
     private TableColumn<CsvLijn, String> naamKolom;
     private TableColumn<CsvLijn, String> rapportOnderdeelKolom;
     private TableColumn<CsvLijn, String> deelgroepCodeKolom;
-    private TableColumn<CsvLijn, Double> puntKolom;
+    private TableColumn<CsvLijn, String> puntKolom;
     private TableColumn<CsvLijn, String> examenkansOmschrijvingKolom;
     private TableColumn<CsvLijn, String> kansaandeelKolom;
     private TableColumn<CsvLijn, String> periodeKolom;
@@ -24,12 +24,12 @@ public class UploadTableView extends TableView {
         this.naamKolom = new TableColumn<>("Naam");
         this.rapportOnderdeelKolom = new TableColumn<>("Rapportonderdeel");
         this.deelgroepCodeKolom = new TableColumn<>("Deelgroepcode");
-//        this.puntKolom = new TableColumn<>("Punt");
+        this.puntKolom = new TableColumn<>("Punt");
         this.examenkansOmschrijvingKolom = new TableColumn<>("Examenkans omschrijving");
         this.kansaandeelKolom = new TableColumn<>("Kansaandeel");
         this.periodeKolom = new TableColumn<>("Periode");
 
-        this.getColumns().addAll(emailKolom, voornaamKolom, naamKolom, rapportOnderdeelKolom, deelgroepCodeKolom, examenkansOmschrijvingKolom, kansaandeelKolom, periodeKolom);
+        this.getColumns().addAll(emailKolom, voornaamKolom, naamKolom, rapportOnderdeelKolom, deelgroepCodeKolom,puntKolom, examenkansOmschrijvingKolom, kansaandeelKolom, periodeKolom);
     }
 
     TableColumn<CsvLijn, String> getEmailKolom() {
@@ -52,7 +52,7 @@ public class UploadTableView extends TableView {
         return deelgroepCodeKolom;
     }
 
-    TableColumn<CsvLijn, Double> getPuntKolom() {
+    TableColumn<CsvLijn, String> getPuntKolom() {
         return puntKolom;
     }
 

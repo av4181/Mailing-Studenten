@@ -19,7 +19,7 @@ public class UploadFileView extends VBox {
     private Button selecteerBestandKnop;
     private Button leesCsvKnop;
     private TextField bestandNaam;
-    private ChoiceBox choiceBoxDelimiter;
+    private ChoiceBox<String> choiceBoxDelimiter;
     private UploadTableView tabel;
     private Button acceptButton;
     private Text explanationText;
@@ -41,10 +41,12 @@ public class UploadFileView extends VBox {
         this.leesCsvKnop = new Button("Opladen");
         this.leesCsvKnop.setDisable(true);
         this.bestandNaam = new TextField();
-        this.choiceBoxDelimiter = new ChoiceBox(FXCollections.observableArrayList(
-                "Delimiter: Tab", "Delimiter: Komma", "Delimiter: Spatie")
-        );
-        this.choiceBoxDelimiter.setValue("Delimiter: Komma");
+
+        this.choiceBoxDelimiter = new ChoiceBox<>();
+        this.choiceBoxDelimiter.getItems().add("Tab");
+        this.choiceBoxDelimiter.getItems().add("Puntkomma");
+        this.choiceBoxDelimiter.getItems().add("Spatie");
+        this.choiceBoxDelimiter.setValue("Puntkomma");
         this.bestandNaam.setDisable(true);
 
         HBox hbox = new HBox();
