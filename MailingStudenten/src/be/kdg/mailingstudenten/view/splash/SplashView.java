@@ -14,13 +14,11 @@ public class SplashView extends BorderPane {
     }
 
     private void initialiseNodes() {
-        BorderPane borderPane = new BorderPane();
         this.splashImage = new Image("/files/SplashScreen.jpg");
-        borderPane.setCenter(new ImageView(splashImage));
     }
 
     private void layoutNodes() {
-        this.setCenter(new ImageView(splashImage));
+        this.setCenter(new ImageView(this.splashImage));
         this.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(6.0))));
     }
 

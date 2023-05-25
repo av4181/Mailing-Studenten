@@ -27,19 +27,17 @@ public class UploadFilePresenter {
         addEventHandlers();
     }
     private void updateView() {
-        // We initialiseren de upload tabel met niets erin.
         new UploadTablePresenter(new ArrayList<>(), this.view.getTabel());
     }
     private void addEventHandlers() {
         this.view.getSelecteerBestandKnop().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent arg0) {
-                // Selecteer bestand en toon naam in label, tonen zou in updateView() moeten
                 FileChooser fileChooser = new FileChooser();
                 fileChooser.setTitle("Open Bestand");
                 fileChooser.setInitialDirectory(new File("."));
                 fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Text Files", "*.txt", "*.csv"));
-                setSelectedFile(fileChooser.showOpenDialog(null));
+                selectedFile = fileChooser.showOpenDialog(null);
                 view.getBestandNaam().setText(selectedFile.getName());
                 file = new CsvBestand();
                 file.setPad(selectedFile.getPath());
@@ -48,7 +46,6 @@ public class UploadFilePresenter {
         });
 
         this.view.getLeesCsvKnop().setOnAction(new EventHandler<ActionEvent>() {
-            // Moet de UploadTableView oproepen en de gevulde tableview tonen.
             @Override
             public void handle(ActionEvent arg0) {
                 file.leesBestand();
@@ -57,6 +54,7 @@ public class UploadFilePresenter {
                 view.getAcceptButton().setDisable(false);
             }
         });
+
         this.view.getChoiceBoxDelimiter().getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
@@ -72,7 +70,6 @@ public class UploadFilePresenter {
             }
         });
 
-
         this.view.getAcceptButton().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -82,13 +79,5 @@ public class UploadFilePresenter {
                 view.getScene().setRoot(mainView);
             }
         });
-    }
-
-    public void setSelectedFile(File selectedFile) {
-        this.selectedFile = selectedFile;
-    }
-
-    public void setFile(CsvBestand file) {
-        this.file = file;
     }
 }
