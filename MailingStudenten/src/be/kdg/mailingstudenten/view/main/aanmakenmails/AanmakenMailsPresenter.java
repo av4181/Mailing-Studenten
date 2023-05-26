@@ -1,6 +1,5 @@
 package be.kdg.mailingstudenten.view.main.aanmakenmails;
 
-import be.kdg.mailingstudenten.model.Grafiek;
 import be.kdg.mailingstudenten.model.PeriodeResultaat;
 import be.kdg.mailingstudenten.model.PeriodeResultaten;
 import javafx.animation.PauseTransition;
@@ -10,7 +9,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.util.Duration;
-import be.kdg.mailingstudenten.view.main.grafiek.GrafiekPresenter;
 
 public class AanmakenMailsPresenter {
     private PeriodeResultaten model;
@@ -26,10 +24,6 @@ public class AanmakenMailsPresenter {
 
     private void updateView() {
         new AanmakenMailsTablePresenter(this.model, this.view.getTable());
-
-        Grafiek grafiek = new Grafiek();
-        grafiek.setgrafiekGegevens(this.model.getPeriodeResultaten());
-        new GrafiekPresenter(grafiek, this.view.getBarPlot());
     }
 
     private void addEventHandlers() {

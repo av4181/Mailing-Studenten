@@ -14,7 +14,6 @@ public class InstellingenPresenter {
         this.view = view;
 
         updateView();
-        addEventHandlers();
     }
 
     private void updateView() {
@@ -22,6 +21,4 @@ public class InstellingenPresenter {
         new InstellingenKleurcodesPresenter(this.model, view.getInstellingenKleurcodesView());
         new InstellingenTemplatesPresenter(this.model, view.getInstellingenTemplatesView());
     }
-
-    private void addEventHandlers() {}
 }

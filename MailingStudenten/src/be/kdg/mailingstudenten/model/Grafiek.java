@@ -43,23 +43,8 @@ public class Grafiek {
         this.series.getData().add(new XYChart.Data<>("Rood",rood));
     }
 
-    public List<PeriodeResultaat> getResultaten() {
-        return resultaten;
-    }
 
     public XYChart.Series<String, Number> getSeries() {
         return series;
-    }
-
-    public String getGrafiekTitel() {
-        return grafiekTitel;
-    }
-
-    public String getxAsLabel() {
-        return xAsLabel;
-    }
-
-    public String getyAsLabel() {
-        return yAsLabel;
     }
 }

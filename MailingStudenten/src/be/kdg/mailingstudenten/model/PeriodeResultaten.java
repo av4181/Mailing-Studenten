@@ -7,6 +7,7 @@ import javafx.collections.transformation.FilteredList;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -15,6 +16,15 @@ public class PeriodeResultaten {
 
     public PeriodeResultaten(List<PeriodeResultaat> periodeResultaten) {
         this.periodeResultaten = FXCollections.observableArrayList(periodeResultaten);
+    }
+
+    public static PeriodeResultaten forStudenten(List<Student> studenten) {
+        List<PeriodeResultaat> periodeResultaten = new ArrayList<>();
+        for (Student student: studenten) {
+            periodeResultaten.addAll(student.getPeriodeResultaten());
+        }
+
+        return new PeriodeResultaten(FXCollections.observableArrayList(periodeResultaten));
     }
 
     public FilteredList<PeriodeResultaat> getGroeneResultaten() {

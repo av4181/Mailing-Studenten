@@ -15,7 +15,6 @@ public class InstellingenView extends TabPane {
 
     public InstellingenView() {
         initialiseNodes();
-        layoutNodes();
     }
 
     private void initialiseNodes() {
@@ -33,8 +32,6 @@ public class InstellingenView extends TabPane {
 
         this.getTabs().addAll(tabAlgemeen, tabKleurcodes, tabTemplates);
     }
-
-    private void layoutNodes() {}
 
     InstellingenAlgemeenView getInstellingenAlgemeenView() {
         return this.instellingenAlgemeenView;

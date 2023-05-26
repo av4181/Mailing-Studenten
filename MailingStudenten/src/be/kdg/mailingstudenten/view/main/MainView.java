@@ -1,9 +1,8 @@
 package be.kdg.mailingstudenten.view.main;
 
 import be.kdg.mailingstudenten.view.main.aanmakenmails.AanmakenMailsView;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
+import be.kdg.mailingstudenten.view.main.grafiek.GrafiekView;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 
 public class MainView extends BorderPane {
@@ -15,6 +14,10 @@ public class MainView extends BorderPane {
     private MenuItem miAbout;
     private MenuBar menuBar;
     private AanmakenMailsView aanmakenMailsView;
+    private GrafiekView grafiekView;
+    private Tab aanmakenMailsTab;
+    private Tab grafiekTab;
+    private TabPane tabPane;
 
     public MainView() {
         initialiseNodes();
@@ -38,11 +41,20 @@ public class MainView extends BorderPane {
         this.menuBar.getMenus().addAll(bestandMenu, editMenu, helpMenu);
 
         this.aanmakenMailsView = new AanmakenMailsView();
+        this.grafiekView = new GrafiekView();
+
+        this.aanmakenMailsTab = new Tab("Aanmaken mails", this.aanmakenMailsView);
+        aanmakenMailsTab.setClosable(false);
+        this.grafiekTab = new Tab("Grafiek", this.grafiekView);
+        grafiekTab.setClosable(false);
+
+        this.tabPane = new TabPane();
+        this.tabPane.getTabs().addAll(aanmakenMailsTab, grafiekTab);
     }
 
     private void layoutNodes() {
         this.setTop(this.menuBar);
-        this.setCenter(aanmakenMailsView);
+        this.setCenter(this.tabPane);
     }
 
     Menu getEditMenu() {
@@ -75,5 +87,17 @@ public class MainView extends BorderPane {
 
     Menu getBestandMenu() {
         return bestandMenu;
+    }
+
+    GrafiekView getGrafiekView() {
+        return grafiekView;
+    }
+
+    Tab getAanmakenMailsTab() {
+        return aanmakenMailsTab;
+    }
+
+    Tab getGrafiekTab() {
+        return grafiekTab;
     }
 }

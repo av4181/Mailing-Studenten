@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 
 public class AboutView extends BorderPane {
-    private Button btnOkeekes;
+    private Button okKnop;
 
     public AboutView() {
         initialiseNodes();
@@ -15,19 +15,19 @@ public class AboutView extends BorderPane {
     }
 
     private void initialiseNodes() {
-        btnOkeekes = new Button("Ok");
-        btnOkeekes.setPrefWidth(60);
+        this.okKnop = new Button("Ok");
+        this.okKnop.setPrefWidth(60);
     }
 
     private void layoutNodes() {
         setCenter(new Label("Deze applicatie is geschreven door Steven en Andreas."));
         setPadding(new Insets(10));
-        BorderPane.setAlignment(btnOkeekes, Pos.CENTER_RIGHT);
-        BorderPane.setMargin(btnOkeekes, new Insets(10, 0, 0, 0));
-        setBottom(btnOkeekes);
+        BorderPane.setAlignment(this.okKnop, Pos.CENTER_RIGHT);
+        BorderPane.setMargin(this.okKnop, new Insets(10, 0, 0, 0));
+        setBottom(this.okKnop);
     }
 
-    Button getBtnOkeekes() {
-        return btnOkeekes;
+    Button getOkKnop() {
+        return okKnop;
     }
 }

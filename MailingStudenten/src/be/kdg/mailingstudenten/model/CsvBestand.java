@@ -8,7 +8,6 @@ public class CsvBestand {
     private String pad;
     private String delimiter = ";";
     private Map<Student,ArrayList<Resultaat>> studentLijst ;
-    private InputStream inputStream;
 
     public CsvBestand() {
         studentLijst = new HashMap<Student,ArrayList<Resultaat>>();
@@ -50,10 +49,6 @@ public class CsvBestand {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public Map<Student, ArrayList<Resultaat>> getStudentLijst() {
-        return studentLijst;
     }
 
     public List<Student> getStudenten() {

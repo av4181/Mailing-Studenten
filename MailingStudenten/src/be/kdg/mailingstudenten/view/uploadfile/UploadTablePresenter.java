@@ -1,24 +1,22 @@
 package be.kdg.mailingstudenten.view.uploadfile;
 
+import be.kdg.mailingstudenten.model.CsvLijnen;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.TableColumn;
 import javafx.util.Callback;
 import be.kdg.mailingstudenten.model.CsvLijn;
 
-import java.util.List;
-
 public class UploadTablePresenter {
 
-    private List<CsvLijn> model;
+    private CsvLijnen model;
     private UploadTableView view;
 
-    public UploadTablePresenter(List<CsvLijn> model, UploadTableView view) {
+    public UploadTablePresenter(CsvLijnen model, UploadTableView view) {
         this.model = model;
         this.view = view;
 
         updateView();
-        addEventHandlers();
     }
 
     private void updateView() {
@@ -77,8 +75,6 @@ public class UploadTablePresenter {
             }
         });
 
-        this.view.getItems().addAll(this.model);
+        this.view.getItems().addAll(this.model.getCsvLijnen());
     }
-
-    private void addEventHandlers() {}
 }

@@ -4,6 +4,7 @@ import be.kdg.mailingstudenten.model.*;
 import be.kdg.mailingstudenten.view.main.aanmakenmails.AanmakenMailsPresenter;
 import be.kdg.mailingstudenten.view.main.about.AboutPresenter;
 import be.kdg.mailingstudenten.view.main.about.AboutView;
+import be.kdg.mailingstudenten.view.main.grafiek.GrafiekPresenter;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -14,7 +15,6 @@ import be.kdg.mailingstudenten.view.uploadfile.UploadFileView;
 import be.kdg.mailingstudenten.view.main.instellingen.InstellingenPresenter;
 import be.kdg.mailingstudenten.view.main.instellingen.InstellingenView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainPresenter {
@@ -30,16 +30,14 @@ public class MainPresenter {
     }
 
     private void updateView() {
-        model.leesBestand();
-
         List<Student> studenten = model.getStudenten();
+        PeriodeResultaten periodeResultaten = PeriodeResultaten.forStudenten(studenten);
 
-        List<PeriodeResultaat> periodeResultaten = new ArrayList<>();
-        for (Student student: studenten) {
-            periodeResultaten.addAll(student.getPeriodeResultaten());
-        }
+        new AanmakenMailsPresenter(periodeResultaten, this.view.getAanmakenMailsView());
 
-        new AanmakenMailsPresenter(new PeriodeResultaten(periodeResultaten), view.getAanmakenMailsView());
+        Grafiek grafiek = new Grafiek();
+        grafiek.setgrafiekGegevens(periodeResultaten.getPeriodeResultaten());
+        new GrafiekPresenter(grafiek, this.view.getGrafiekView());
     }
 
     private void addEventHandlers() {
@@ -78,8 +76,7 @@ public class MainPresenter {
             @Override
             public void handle(ActionEvent event) {
                 AboutView aboutView = new AboutView();
-                SimpleModel SimpleModel = new SimpleModel();
-                AboutPresenter aboutPresenter = new AboutPresenter(SimpleModel,aboutView);
+                new AboutPresenter(aboutView);
                 Stage aboutStage = new Stage();
                 aboutStage.initOwner(view.getScene().getWindow());
                 aboutStage.initModality(Modality.APPLICATION_MODAL);

@@ -4,22 +4,21 @@ import javafx.collections.FXCollections;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
+import javafx.scene.layout.VBox;
 
 import java.util.Arrays;
 
-public class GrafiekView {
+public class GrafiekView extends VBox {
     private BarChart<String, Number> barplot;
     private CategoryAxis xAs = new CategoryAxis();
     private NumberAxis yAs = new NumberAxis();
 
-
     public GrafiekView() {
         initialiseNodes();
         layoutNodes();
-
     }
 
-    public void initialiseNodes(){
+    public void initialiseNodes() {
         xAs.setCategories(FXCollections.<String>observableArrayList(Arrays.asList("Groen", "Geel", "Oranje", "Rood")));
         xAs.setLabel("Kleurcode");
         yAs.setLabel("Aantal studenten");
@@ -29,9 +28,11 @@ public class GrafiekView {
         this.barplot = new BarChart<>(xAs, yAs);
         this.barplot.setTitle("Overzicht");
         this.barplot.setLegendVisible(false);
+        this.getChildren().add(this.barplot);
+    }
+    public void layoutNodes() {
         this.barplot.setCategoryGap(200);
     }
-    public void layoutNodes(){}
 
     public BarChart<String, Number> getBarplot() {
         return barplot;

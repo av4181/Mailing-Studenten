@@ -25,10 +25,6 @@ public class PeriodeResultaat {
         return periode;
     }
 
-    public List<Resultaat> getResultaten() {
-        return resultaten;
-    }
-
     public KleurCode bepaalKleurCode() {
         Instelling instelling = new Instelling();
         List<Resultaat> nietGeslaagdeResultaten = this.getNietGeslaagdeResultaten();

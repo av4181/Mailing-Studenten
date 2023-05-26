@@ -1,6 +1,7 @@
 package be.kdg.mailingstudenten.view.uploadfile;
 
 import be.kdg.mailingstudenten.model.CsvLijn;
+import be.kdg.mailingstudenten.model.CsvLijnen;
 import be.kdg.mailingstudenten.view.main.MainPresenter;
 import be.kdg.mailingstudenten.view.main.MainView;
 import javafx.beans.value.ChangeListener;
@@ -27,7 +28,7 @@ public class UploadFilePresenter {
         addEventHandlers();
     }
     private void updateView() {
-        new UploadTablePresenter(new ArrayList<>(), this.view.getTabel());
+        new UploadTablePresenter(new CsvLijnen(new ArrayList<>()), this.view.getTabel());
     }
     private void addEventHandlers() {
         this.view.getSelecteerBestandKnop().setOnAction(new EventHandler<ActionEvent>() {
