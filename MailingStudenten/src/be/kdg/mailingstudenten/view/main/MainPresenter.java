@@ -58,7 +58,7 @@ public class MainPresenter {
                 instellingenStage.initModality(Modality.APPLICATION_MODAL);
 
                 InstellingenView instellingenView = new InstellingenView();
-                new InstellingenPresenter(new Instelling(), instellingenView);
+                new InstellingenPresenter(instellingenView);
 
                 Scene scene = new Scene(instellingenView);
 

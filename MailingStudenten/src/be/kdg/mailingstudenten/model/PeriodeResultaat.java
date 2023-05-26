@@ -26,18 +26,18 @@ public class PeriodeResultaat {
     }
 
     public KleurCode bepaalKleurCode() {
-        Instelling instelling = new Instelling();
+        InstellingenKleurcodes instellingen = new InstellingenKleurcodes();
         List<Resultaat> nietGeslaagdeResultaten = this.getNietGeslaagdeResultaten();
 
-        instelling.getBereikGroen().isInBereik(nietGeslaagdeResultaten.size());
+        instellingen.getBereikGroen().isInBereik(nietGeslaagdeResultaten.size());
 
         if (nietGeslaagdeResultaten.size() == this.resultaten.size()) {
             return KleurCode.ROOD;
-        } else if (instelling.getBereikOranje().isInBereik(nietGeslaagdeResultaten.size())) {
+        } else if (instellingen.getBereikOranje().isInBereik(nietGeslaagdeResultaten.size())) {
             return KleurCode.ORANJE;
-        } else if (instelling.getBereikGeel().isInBereik(nietGeslaagdeResultaten.size())) {
+        } else if (instellingen.getBereikGeel().isInBereik(nietGeslaagdeResultaten.size())) {
             return KleurCode.GEEL;
-        } if (instelling.getBereikGroen().isInBereik(nietGeslaagdeResultaten.size())) {
+        } if (instellingen.getBereikGroen().isInBereik(nietGeslaagdeResultaten.size())) {
             return KleurCode.GROEN;
         } else {
             return KleurCode.GRIJS;

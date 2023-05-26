@@ -68,7 +68,7 @@ public class PeriodeResultaten {
     }
 
     public void mailsAanmaken(List<PeriodeResultaat> periodeResultaten) {
-        Instelling instelling = new Instelling();
+        InstellingenAlgemeen instelling = new InstellingenAlgemeen();
 
         for (PeriodeResultaat periodeResultaat : periodeResultaten) {
             MailTemplateVariables mailTemplateVariables = MailTemplateVariables.voorPeriodeResultaat(periodeResultaat);

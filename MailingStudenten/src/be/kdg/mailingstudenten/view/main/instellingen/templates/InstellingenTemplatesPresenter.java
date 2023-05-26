@@ -1,6 +1,6 @@
 package be.kdg.mailingstudenten.view.main.instellingen.templates;
 
-import be.kdg.mailingstudenten.model.Instelling;
+import be.kdg.mailingstudenten.model.InstellingenTemplates;
 import be.kdg.mailingstudenten.view.main.instellingen.templates.templateeditor.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -9,10 +9,10 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class InstellingenTemplatesPresenter {
-    private Instelling model;
+    private InstellingenTemplates model;
     private InstellingenTemplatesView view;
 
-    public InstellingenTemplatesPresenter(Instelling model, InstellingenTemplatesView view) {
+    public InstellingenTemplatesPresenter(InstellingenTemplates model, InstellingenTemplatesView view) {
         this.model = model;
         this.view = view;
 

@@ -19,17 +19,17 @@ public abstract class MailTemplate {
     }
 
     public static MailTemplate voorPeriodeResultaat(PeriodeResultaat periodeResultaat) {
-        Instelling instelling = new Instelling();
+        InstellingenTemplates instellingen = new InstellingenTemplates();
 
         PeriodeResultaat.KleurCode kleurCode = periodeResultaat.bepaalKleurCode();
         if (kleurCode == PeriodeResultaat.KleurCode.GROEN) {
-            return instelling.getMailTemplateGroen();
+            return instellingen.getMailTemplateGroen();
         } else if (kleurCode == PeriodeResultaat.KleurCode.GEEL) {
-            return instelling.getMailTemplateGeel();
+            return instellingen.getMailTemplateGeel();
         } else if (kleurCode == PeriodeResultaat.KleurCode.ORANJE) {
-            return instelling.getMailTemplateOranje();
+            return instellingen.getMailTemplateOranje();
         } else {
-            return instelling.getMailTemplateRood();
+            return instellingen.getMailTemplateRood();
         }
     }
 

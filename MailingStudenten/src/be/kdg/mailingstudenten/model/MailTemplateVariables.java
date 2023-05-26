@@ -5,12 +5,12 @@ import java.util.Iterator;
 import java.util.Map;
 
 public class MailTemplateVariables {
-    private Instelling instelling;
+    private InstellingenAlgemeen instellingen;
     private PeriodeResultaat periodeResultaat;
     private Map<String, String> variables;
 
     public MailTemplateVariables(PeriodeResultaat periodeResultaat) {
-        this.instelling = new Instelling();
+        this.instellingen = new InstellingenAlgemeen();
         this.periodeResultaat = periodeResultaat;
         this.variables = new HashMap<>();
 
@@ -34,9 +34,9 @@ public class MailTemplateVariables {
         }
 
         this.variables.put("periode_resultaat.niet_geslaagde_vakken", nietGeslaagdResultaten);
-        this.variables.put("instelling.docent_voornaam", this.instelling.getDocentVoornaam());
-        this.variables.put("instelling.docent_achternaam", this.instelling.getDocentAchternaam());
-        this.variables.put("instelling.link_afspraak", this.instelling.getLinkAfspraak());
+        this.variables.put("instelling.docent_voornaam", this.instellingen.getDocentVoornaam());
+        this.variables.put("instelling.docent_achternaam", this.instellingen.getDocentAchternaam());
+        this.variables.put("instelling.link_afspraak", this.instellingen.getLinkAfspraak());
     }
 
     public Map<String, String> getVariables() {

@@ -1,6 +1,6 @@
 package be.kdg.mailingstudenten.view.main.instellingen.templates.templateeditor;
 
-import be.kdg.mailingstudenten.model.Instelling;
+import be.kdg.mailingstudenten.model.InstellingenTemplates;
 import be.kdg.mailingstudenten.model.MailTemplateGroen;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
@@ -8,7 +8,7 @@ import javafx.event.EventHandler;
 import javafx.util.Duration;
 
 public class TemplateGroenEditorPresenter extends TemplateEditorPresenter {
-    public TemplateGroenEditorPresenter(Instelling model, TemplateEditorView view) {
+    public TemplateGroenEditorPresenter(InstellingenTemplates model, TemplateEditorView view) {
         super(model, view);
     }
 
@@ -27,7 +27,6 @@ public class TemplateGroenEditorPresenter extends TemplateEditorPresenter {
             @Override
             public void handle(ActionEvent actionEvent) {
                 String successMessage = String.format("-fx-text-fill: GREEN;");
-                String errorMessage = String.format("-fx-text-fill: RED;");
 
                 model.setMailTemplateGroen(new MailTemplateGroen(view.getTemplateTitel().getText(), view.getTemplateContent().getHtmlText()));
                 model.opslaan();

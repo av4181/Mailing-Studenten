@@ -1,7 +1,7 @@
 package be.kdg.mailingstudenten.view.main.instellingen.kleurcodes;
 
 import be.kdg.mailingstudenten.model.Bereik;
-import be.kdg.mailingstudenten.model.Instelling;
+import be.kdg.mailingstudenten.model.InstellingenKleurcodes;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -10,10 +10,10 @@ import javafx.util.Duration;
 import java.util.ArrayList;
 
 public class InstellingenKleurcodesPresenter {
-    private Instelling model;
+    private InstellingenKleurcodes model;
     private InstellingenKleurcodesView view;
 
-    public InstellingenKleurcodesPresenter(Instelling model, InstellingenKleurcodesView view) {
+    public InstellingenKleurcodesPresenter(InstellingenKleurcodes model, InstellingenKleurcodesView view) {
         this.model = model;
         this.view = view;
 

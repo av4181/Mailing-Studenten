@@ -1,6 +1,7 @@
 package be.kdg.mailingstudenten.view.main.instellingen.algemeen;
 
-import be.kdg.mailingstudenten.model.Instelling;
+import be.kdg.mailingstudenten.model.Instellingen;
+import be.kdg.mailingstudenten.model.InstellingenAlgemeen;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -11,10 +12,10 @@ import java.io.File;
 import java.util.ArrayList;
 
 public class InstellingenAlgemeenPresenter {
-    private Instelling model;
+    private InstellingenAlgemeen model;
     private InstellingenAlgemeenView view;
 
-    public InstellingenAlgemeenPresenter(Instelling model, InstellingenAlgemeenView view) {
+    public InstellingenAlgemeenPresenter(InstellingenAlgemeen model, InstellingenAlgemeenView view) {
         this.model = model;
         this.view = view;
 

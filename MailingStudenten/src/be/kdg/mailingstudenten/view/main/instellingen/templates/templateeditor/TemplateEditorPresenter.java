@@ -1,12 +1,12 @@
 package be.kdg.mailingstudenten.view.main.instellingen.templates.templateeditor;
 
-import be.kdg.mailingstudenten.model.Instelling;
+import be.kdg.mailingstudenten.model.InstellingenTemplates;
 
 abstract public class TemplateEditorPresenter {
-    protected Instelling model;
+    protected InstellingenTemplates model;
     protected TemplateEditorView view;
 
-    public TemplateEditorPresenter(Instelling model, TemplateEditorView view) {
+    public TemplateEditorPresenter(InstellingenTemplates model, TemplateEditorView view) {
         this.model = model;
         this.view = view;
 
