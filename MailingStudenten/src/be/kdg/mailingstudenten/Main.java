@@ -6,6 +6,7 @@ import be.kdg.mailingstudenten.view.uploadfile.UploadFileView;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 

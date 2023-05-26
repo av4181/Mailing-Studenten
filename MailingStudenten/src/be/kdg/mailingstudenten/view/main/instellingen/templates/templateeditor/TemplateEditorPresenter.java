@@ -1,6 +1,7 @@
 package be.kdg.mailingstudenten.view.main.instellingen.templates.templateeditor;
 
 import be.kdg.mailingstudenten.model.InstellingenTemplates;
+import javafx.scene.control.Alert;
 
 abstract public class TemplateEditorPresenter {
     protected InstellingenTemplates model;

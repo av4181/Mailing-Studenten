@@ -16,10 +16,10 @@ public class GrafiekPresenter {
         updateView();
     }
     private void updateView(){
-        List<XYChart.Data<String, Number>> test = this.model.getSeries().getData();
+        List<XYChart.Data<String, Number>> data = this.model.getSeries().getData();
 
         double maxValue = 0;
-        for (XYChart.Data<String, Number> item : test) {
+        for (XYChart.Data<String, Number> item : data) {
             if ((int) item.getYValue() > maxValue) {
                 maxValue = (int) item.getYValue();
             }

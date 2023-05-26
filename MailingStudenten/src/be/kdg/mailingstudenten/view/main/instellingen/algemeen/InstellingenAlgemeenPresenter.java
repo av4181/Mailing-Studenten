@@ -1,6 +1,5 @@
 package be.kdg.mailingstudenten.view.main.instellingen.algemeen;
 
-import be.kdg.mailingstudenten.model.Instellingen;
 import be.kdg.mailingstudenten.model.InstellingenAlgemeen;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
@@ -44,6 +43,9 @@ public class InstellingenAlgemeenPresenter {
                 if (view.getLinkAfspraakInput().getText().isBlank()) {
                     validationErrors.add("Link afspraak is verplicht.");
                 }
+                if (view.getMailsAanmakenBestemmingInput().getText().isBlank()) {
+                    validationErrors.add("Mails bestemming is verplicht.");
+                }
 
                 if (validationErrors.size() > 0) {
                     String validationErrorMessage = "";
@@ -54,23 +56,27 @@ public class InstellingenAlgemeenPresenter {
                     return;
                 }
 
-                model.setDocentVoornaam(view.getDocentVoornaamInput().getText());
-                model.setDocentAchternaam(view.getDocentAchternaamInput().getText());
-                model.setLinkAfspraak(view.getLinkAfspraakInput().getText());
-                model.setMailsAanmakenBestemming(view.getMailsAanmakenBestemmingInput().getText());
+                try {
+                    model.setDocentVoornaam(view.getDocentVoornaamInput().getText());
+                    model.setDocentAchternaam(view.getDocentAchternaamInput().getText());
+                    model.setLinkAfspraak(view.getLinkAfspraakInput().getText());
+                    model.setMailsAanmakenBestemming(view.getMailsAanmakenBestemmingInput().getText());
 
-                model.opslaan();
+                    model.opslaan();
 
-                PauseTransition pause = new PauseTransition(Duration.seconds(2));
-                pause.setOnFinished(new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent actionEvent) {
-                        view.getBevestigingsTekst().setText(null);
-                    }
-                });
-                pause.play();
+                    PauseTransition pause = new PauseTransition(Duration.seconds(2));
+                    pause.setOnFinished(new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent actionEvent) {
+                            view.getBevestigingsTekst().setText(null);
+                        }
+                    });
+                    pause.play();
 
-                view.getBevestigingsTekst().setText("Opgeslagen!");
+                    view.getBevestigingsTekst().setText("Opgeslagen!");
+                } catch (Exception e) {
+                    view.getValidatieTekst().setText("Er ging iets mis.");
+                }
             }
         });
 

@@ -9,6 +9,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
 import javafx.stage.FileChooser;
 import be.kdg.mailingstudenten.model.CsvBestand;
 
@@ -34,39 +35,57 @@ public class UploadFilePresenter {
         this.view.getSelecteerBestandKnop().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent arg0) {
-                FileChooser fileChooser = new FileChooser();
-                fileChooser.setTitle("Open Bestand");
-                fileChooser.setInitialDirectory(new File("."));
-                fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Text Files", "*.txt", "*.csv"));
-                selectedFile = fileChooser.showOpenDialog(null);
-                view.getBestandNaam().setText(selectedFile.getName());
-                file = new CsvBestand();
-                file.setPad(selectedFile.getPath());
-                view.getLeesCsvKnop().setDisable(false);
+                try {
+                    FileChooser fileChooser = new FileChooser();
+                    fileChooser.setTitle("Open Bestand");
+                    fileChooser.setInitialDirectory(new File("."));
+                    fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Text Files", "*.txt", "*.csv"));
+                    selectedFile = fileChooser.showOpenDialog(null);
+                    view.getBestandNaam().setText(selectedFile.getName());
+                    file = new CsvBestand();
+                    file.setPad(selectedFile.getPath());
+                    view.getLeesCsvKnop().setDisable(false);
+                } catch (Exception e) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Bestand kiezen mislukt");
+                    alert.setContentText("Neem contact op met KDG voor meer informatie.");
+                    alert.showAndWait();
+                }
             }
         });
 
         this.view.getLeesCsvKnop().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent arg0) {
-                file.leesBestand();
-                List<CsvLijn> csvLijnen = file.getAlleResultaten();
-                view.getTabel().setItems(FXCollections.observableArrayList(csvLijnen));
-                view.getAcceptButton().setDisable(false);
+                try {
+                    file.leesBestand();
+                    List<CsvLijn> csvLijnen = file.getAlleResultaten();
+                    view.getTabel().setItems(FXCollections.observableArrayList(csvLijnen));
+                    view.getAcceptButton().setDisable(false);
+                } catch (Exception e) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Bestand uitlezen mislukt");
+                    alert.setContentText("Het bestand kon niet worden uitgelezen. Neem contact op met KDG voor meer informatie.");
+                    alert.showAndWait();
+                }
             }
         });
 
         this.view.getChoiceBoxDelimiter().getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                if (observableValue.getValue() == "Tab") {
-                    file.setDelimiter("\t");
-                }
-                if (observableValue.getValue() == "Puntkomma") {
-                    file.setDelimiter(";");
-                }
-                if (observableValue.getValue() == "Spatie") {
-                    file.setDelimiter(" ");
+                try {
+                    if (observableValue.getValue() == "Tab") {
+                        file.setDelimiter("\t");
+                    }
+                    if (observableValue.getValue() == "Puntkomma") {
+                        file.setDelimiter(";");
+                    }
+                } catch (IllegalArgumentException e) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Bestand uitlezen mislukt");
+                    alert.setContentText("Er ging iets mis tijdens het kiezen van de delimiter. Neem contact op met KDG voor meer informatie.");
+                    alert.showAndWait();
                 }
             }
         });

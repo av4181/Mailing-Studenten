@@ -12,7 +12,11 @@ public class InstellingenKleurcodes extends Instellingen {
     }
 
     @Override
-    public void opslaan() {
+    public void opslaan() throws InstellingenKleurcodeException {
+        if ((bereikGeel.getLaag() - bereikGroen.getHoog()) != 1 || (bereikOranje.getLaag() - bereikGeel.getHoog()) != 1) {
+            throw new InstellingenKleurcodeException("Er kunnen geen gaten zijn tussen de verschillende kleurcodes.");
+        }
+
         preferences.putInt("groenVanaf", this.bereikGroen.getLaag());
         preferences.putInt("groenTotEnMet", this.bereikGroen.getHoog());
         preferences.putInt("geelVanaf", this.bereikGeel.getLaag());

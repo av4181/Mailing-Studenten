@@ -7,10 +7,10 @@ import java.util.stream.Collectors;
 public class CsvBestand {
     private String pad;
     private String delimiter = ";";
-    private Map<Student,ArrayList<Resultaat>> studentLijst ;
+    private Map<Student,ArrayList<Resultaat>> studentLijst;
 
     public CsvBestand() {
-        studentLijst = new HashMap<Student,ArrayList<Resultaat>>();
+        studentLijst = new HashMap<>();
     }
 
     public void leesBestand() {
@@ -47,7 +47,6 @@ public class CsvBestand {
                 teller++;
             }
         } catch (IOException e) {
-            throw new RuntimeException(e);
         }
     }
 
@@ -70,10 +69,16 @@ public class CsvBestand {
     }
 
     public void setPad(String pad) {
+        if (pad == null || pad.isBlank()) {
+            throw new IllegalArgumentException("Pad van bestand kan niet leeg zijn.");
+        }
         this.pad = pad;
     }
 
     public void setDelimiter(String delimiter) {
+        if (delimiter == null || delimiter.isBlank()) {
+            throw new IllegalArgumentException("Csv delimiter kan niet leeg zijn.");
+        }
         this.delimiter = delimiter;
     }
 }

@@ -25,7 +25,6 @@ public class AanmakenMailsTablePresenter {
         this.view = view;
 
         updateView();
-        addEventHandlers();
     }
 
     private void updateView() {
@@ -118,6 +117,4 @@ public class AanmakenMailsTablePresenter {
 
         this.view.getItems().addAll(this.model.getPeriodeResultaten());
     }
-
-    private void addEventHandlers() {}
 }

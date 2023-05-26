@@ -6,6 +6,10 @@ public class Bereik {
     private int hoog;
 
     public Bereik(int laag, int hoog) {
+        if (laag > hoog) {
+            throw new IllegalArgumentException("Startwaarde van bereik kan niet groter zijn dan eindwaarde.");
+        }
+
         this.laag = laag;
         this.hoog = hoog;
     }

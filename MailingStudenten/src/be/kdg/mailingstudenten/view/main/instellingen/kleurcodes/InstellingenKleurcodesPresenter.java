@@ -105,6 +105,8 @@ public class InstellingenKleurcodesPresenter {
                     view.getBevestigingsTekst().setText("Opgeslagen!");
                 } catch (NumberFormatException e) {
                     view.getValidatieTekst().setText("Velden mogen enkel numerieke waarden bevatten.");
+                } catch (Exception e) {
+                    view.getValidatieTekst().setText("Er ging iets mis.");
                 }
             }
         });

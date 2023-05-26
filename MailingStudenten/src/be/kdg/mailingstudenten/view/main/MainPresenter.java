@@ -53,15 +53,12 @@ public class MainPresenter {
         this.view.getInstellingenMenuItem().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+                InstellingenView instellingenView = new InstellingenView();
+                new InstellingenPresenter(instellingenView);
                 Stage instellingenStage = new Stage();
                 instellingenStage.initOwner(view.getScene().getWindow());
                 instellingenStage.initModality(Modality.APPLICATION_MODAL);
-
-                InstellingenView instellingenView = new InstellingenView();
-                new InstellingenPresenter(instellingenView);
-
                 Scene scene = new Scene(instellingenView);
-
                 instellingenStage.setScene(scene);
                 instellingenStage.setX(view.getScene().getX() + 100);
                 instellingenStage.setY(view.getScene().getX() + 100);

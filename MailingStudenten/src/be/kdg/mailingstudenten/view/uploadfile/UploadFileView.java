@@ -34,7 +34,6 @@ public class UploadFileView extends VBox {
         this.choiceBoxDelimiter = new ChoiceBox<>();
         this.choiceBoxDelimiter.getItems().add("Tab");
         this.choiceBoxDelimiter.getItems().add("Puntkomma");
-        this.choiceBoxDelimiter.getItems().add("Spatie");
         this.choiceBoxDelimiter.setValue("Puntkomma");
 
         this.leesCsvKnop = new Button("Opladen");

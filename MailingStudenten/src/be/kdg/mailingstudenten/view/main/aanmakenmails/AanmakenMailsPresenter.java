@@ -65,7 +65,7 @@ public class AanmakenMailsPresenter {
                     pause.play();
 
                     view.getBevestigingsTekst().setText("Aangemaakt!");
-                } catch (Throwable e) {
+                } catch (Exception e) {
                     view.getBevestigingsTekst().setStyle("-fx-text-fill: RED;");
                     view.getBevestigingsTekst().setText("Er ging iets fout.");
                 }
