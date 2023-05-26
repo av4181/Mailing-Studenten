@@ -41,6 +41,10 @@ public class UploadFilePresenter {
                     fileChooser.setInitialDirectory(new File("."));
                     fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Text Files", "*.txt", "*.csv"));
                     selectedFile = fileChooser.showOpenDialog(null);
+
+                    if (selectedFile == null) {
+                        return;
+                    }
                     view.getBestandNaam().setText(selectedFile.getName());
                     file = new CsvBestand();
                     file.setPad(selectedFile.getPath());

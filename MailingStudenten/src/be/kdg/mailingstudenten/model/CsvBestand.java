@@ -76,8 +76,8 @@ public class CsvBestand {
     }
 
     public void setDelimiter(String delimiter) {
-        if (delimiter == null || delimiter.isBlank()) {
-            throw new IllegalArgumentException("Csv delimiter kan niet leeg zijn.");
+        if (delimiter == null) {
+            throw new IllegalArgumentException("Csv delimiter kan niet null zijn.");
         }
         this.delimiter = delimiter;
     }
